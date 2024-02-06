@@ -7,3 +7,16 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+
+# 1. Seeds for users
+# 2. Seeds for doctors
+# 3. Seeds for appointments
+
+
+User.new(
+  email: 'harri@gmail.com',
+  password: 'password',
+  password_confirmation: 'password'
+  
+)
