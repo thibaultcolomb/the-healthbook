@@ -14,9 +14,30 @@
 # 3. Seeds for appointments
 
 
-User.new(
+harri = User.new(
   email: 'harri@gmail.com',
   password: 'password',
-  password_confirmation: 'password'
-  
+  password_confirmation: 'password',
+  first_name: 'Harri',
+  last_name: 'Potter'
+)
+harri.save!
+
+specialty = %w[Internal, Medicine, Surgery, Pediatrics, Obstetrics and Gynecology, Psychiatry, Radiology, Anesthesiology, Emergency Medicine, Pathology, Ophthalmology, Otolaryngology (ENT), Dermatology, Neurology , Urology, Orthopedics, Physical Medicine and Rehabilitation, Allergy and Immunology, Infectious Diseases, Endocrinology, Cardiology]
+
+Doctor.new(
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  specialty: specialty.sample,
+  email: Faker::Internet.email,
+  user_id: harri.id
+)
+
+Report.new(
+  title: Faker::Lorem.sentence,
+  content: Faker::Lorem.paragraph,
+  report_date: Faker::Date.between(from: Date.today, to: 1.month.from_now),
+  category: specialty.sample,
+  user_id: harri.id,
+  doctor_id: harri.doctors.sample.id
 )
