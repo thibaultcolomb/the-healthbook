@@ -1,0 +1,18 @@
+<h2>Your Appointments</h2>
+<h3>upcoming</h3>
+
+<div class="cards">
+<% @appointments.each do |appointment| %>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= appointment.date %></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= appointment.doctor.id %></h6>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<h3>past</h3>
