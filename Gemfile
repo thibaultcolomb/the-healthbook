@@ -31,6 +31,12 @@ gem "jbuilder"
 # Search
 gem "pg_search"
 
+# tesseract
+gem 'rtesseract'
+
+# cloudinary
+gem "cloudinary"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

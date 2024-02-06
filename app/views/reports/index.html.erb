@@ -1,32 +1,72 @@
-<h3>Medical history</h3>
+<div class="main">
 
-<%= form_with url: reports_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Type a keyword"
-    %>
-  <%= submit_tag "Search", name: "", class: "" %>
-<% end %>
+  <div class="d-flex align-items-center mt-5">
+    <%= link_to root_path do %>
+      <i class="fa-solid fa-arrow-left ms-3"></i>
+    <% end %>
+    <div class="mx-auto text-center">
+      <h3>Medical history</h3>
+    </div>
+  </div>
 
-<ul>
-  <% @categories.each do |category|%>
-  <li>
-    <%= link_to category, reports_path(category: category) %>
-  </li>
-  <% end %>
-</ul>
+  <div class="searchbar">
+    <%= form_with url: reports_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 
-<%= link_to "New report", new_report_path %>
 
-<ul>
-  <% @reports.each do |report|%>
+  <ul class="inline-list">
+    <%= link_to "All", reports_path %>
+    <% @categories.each do |category|%>
     <li>
-      <%= report.report_date %>
-      <%= report.title %>
-      <%= report.category %>
-      <%= report.content %>
+      <%= link_to category, reports_path(category: category) %>
     </li>
-  <% end %>
+    <% end %>
+  </ul>
 
-</ul>
+  <div class="d-flex justify-content-end">
+    <%= link_to new_report_path do %>
+      <i class="fa-solid fa-plus"></i>
+    <% end %>
+  </div>
+
+
+  <ul class="reports">
+    <% @reports.each do |report|%>
+      <li class="report-card">
+        <div class="report-date">
+          <div class="">
+            <%= report.report_date.day %>
+          </div>
+          <div>
+            <%= (Date::MONTHNAMES[report.report_date.month]).first(3) %>
+          </div>
+
+        </div>
+        <div class="report-details">
+          <div class="report-head">
+            <div class="report-title">
+              <%= report.title %>
+            </div>
+            <div class="report-category">
+              <%= report.category %>
+            </div>
+          </div>
+          <div class="report-content">
+            <%= report.content %>
+          </div>
+        </div>
+
+
+      </li>
+    <% end %>
+
+  </ul>
+
+</div>

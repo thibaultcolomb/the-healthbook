@@ -1,0 +1,24 @@
+.reports {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.report-card {
+  border-style: solid;
+  margin-bottom: 12px;
+  display: flex;
+  padding: 4px;
+}
+
+.report-date {
+  border-style: solid;
+}
+
+.report-details {
+  margin-left: 4px;
+}
+
+.report-head {
+  display: flex;
+  justify-content: space-between;
+}
