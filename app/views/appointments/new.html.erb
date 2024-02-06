@@ -5,11 +5,13 @@
             as: :string,
             input_html: { data: { controller: "datepicker" } },
             class: "bg-light" %>
+  <%= f.input :time,
+              as: :time %>
 
   <%= f.input :content,
               as: :file %>
 
-  <%= f.association :doctor, label: "Doctor", collection: Doctor.all, label_method: :name, value_method: :id, include_blank: "Select Doctor" %>
+  <%= f.association :doctor, label: "Doctor", collection: Doctor.all, label_method: :first_name, value_method: :id, include_blank: "Select Doctor" %>
 
 
   <%= f.submit "Create Appointment", class: 'btn btn-primary' %>
