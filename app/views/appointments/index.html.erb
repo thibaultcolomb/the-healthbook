@@ -1,5 +1,5 @@
-<h2 align="center">Your Appointments</h2>
-<h3 align="center">upcoming</h3>
+<h2 style="text-align: center;">Your Appointments</h2>
+<h3 style="text-align: center;">Upcoming Appointments</h3>
 
 <div class="appointment-cards">
 <% @appointments.each do |appointment| %>
@@ -10,10 +10,17 @@
       <h3 class="card-title"><%= appointment.appointment_date.month %></h3>
     </div>
       <div>
-        <p class="card-text"><%= appointment.time %></p>
+        <%= "#{appointment.appointment_date} #{appointment.time.strftime("%I:%M:%S %p")}" %>
+        <%# .strftime("%A, %d %b %Y %l:%M %p) %>
         <p class="card-subtitle mb-2 text-muted"><%= appointment.doctor.first_name + " " + appointment.doctor.last_name %></p>
-        <a href="#" class="fa-regular fa-pen-to-square"></a>
-        <a href="#" class="fa-solid fa-trash"></a>
+
+        <%= link_to edit_appointment_path(appointment), class: "btn btn-secondary mt-5 me-1" do %>
+        <i class="fa-regular fa-pen-to-square"></i>
+        <% end %>
+
+        <%= link_to appointment_path(appointment), data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"}, class: "btn btn-secondary mt-5" do %>
+        <i class="fa-regular fa-trash-can"></i>
+        <% end %>
       </div>
     </div>
   </div>
