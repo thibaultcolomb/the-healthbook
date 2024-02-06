@@ -11,16 +11,18 @@
 
 require 'faker' # Include Faker gem at the beginning
 
-specialty = %w[Internal Medicine Surgery Pediatrics Radiology]
+specialty = ["Internal Medicine", "Surgery", "Pediatrics", "Radiology"]
 
 category = ['Blood test', 'MRI', 'X-Ray', 'Ultrasound', 'Other']
 
 harri = User.create!(
   email: 'harri@gmail.com',
   password: 'password',
+
   password_confirmation: 'password',
   first_name: 'Harri',
   last_name: 'Besceli'
+
 )
 
 thibault = User.create!(
