@@ -1,0 +1,21 @@
+<h3>Medical history</h3>
+
+<ul>
+  <% @reports.each do |report|%>
+    <% if truevalue %>
+      <%= report.category %>
+    <% end %>
+  <% end %>
+</ul>
+
+<ul>
+  <% @reports.each do |report|%>
+    <li>
+      <%= report.report_date %>
+      <%= report.name %>
+      <%= report.category %>
+      <%= report.content %>
+    </li>
+  <% end %>
+
+</ul>
