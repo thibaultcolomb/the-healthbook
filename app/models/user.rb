@@ -8,5 +8,5 @@ class User < ApplicationRecord
   has_many :doctors
   has_many :appointments, through: :doctors
 
-  validates :first_name, :last_name, :email, :password, presence: true
+  validates :email, :password, presence: true
 end
