@@ -1,0 +1,12 @@
+<h3>New report</h3>
+
+<%= simple_form_for @report do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <%= f.input :title %>
+    <%= f.input :report_date %>
+    <%= f.input :category, collection: %w[Blood Tests, Imaging Reports, Surgery Reports, Pathology Reports, Cardiology Reports, Endoscopy Reports, Pulmonary Function Test (PFT) Reports, Genetic Testing Reports, Allergy Testing Reports,Neurological Reports, Dermatology Reports, Obstetric and Gynecological Reports, Urology Reports, Orthopedic Reports, Gastroenterology Reports, Ophthalmology Reports, Nuclear Medicine Reports, Psychiatric Reports, Rehabilitation Reports, Dental Reports]%>
+    <%= f.input :content %>
+    <%= f.submit "Add a report" %>
+    <% end %>
