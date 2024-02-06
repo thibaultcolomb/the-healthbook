@@ -1,3 +1,24 @@
-.appointment.card{
+.appointment.card {
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 370px;
+  margin: 0 auto;
+
+
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date {
+  background-color: #FFF6E9;
+  text-align: center;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card-text {
+  font-weight: bold;
 }
