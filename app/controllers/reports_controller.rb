@@ -1,7 +1,16 @@
 class ReportsController < ApplicationController
 
   def index
-    @reports = Report.all
+
+    if params[:query].present?
+      @reports = Report.search_by_title(params[:query])
+    elsif params[:category].present?
+      @reports = Report.where(category: params[:category])
+    else
+      @reports = Report.all
+    end
+
+    @categories = Report.pluck(:category).uniq
   end
 
   def new
@@ -10,6 +19,7 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new(report_params)
+    @report.user = current_user
     @report.save
 
     if @report.save
@@ -19,4 +29,9 @@ class ReportsController < ApplicationController
     end
   end
 
+  private
+
+  def report_params
+    params.require(:report).permit(:title, :category, :content, :report_date)
+  end
 end
