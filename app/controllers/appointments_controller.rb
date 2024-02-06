@@ -15,11 +15,14 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def index
+    @appointments = Appointment.all
+  end
+end
+
+
   private
 
   def appointment_params
     params.require(:appointment).permit(:date, :report_image, :doctor_id)
   end
-
-
-end
