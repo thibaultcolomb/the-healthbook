@@ -1,0 +1,32 @@
+<h3>Medical history</h3>
+
+<%= form_with url: reports_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Type a keyword"
+    %>
+  <%= submit_tag "Search", name: "", class: "" %>
+<% end %>
+
+<ul>
+  <% @categories.each do |category|%>
+  <li>
+    <%= link_to category, reports_path(category: category) %>
+  </li>
+  <% end %>
+</ul>
+
+<%= link_to "New report", new_report_path %>
+
+<ul>
+  <% @reports.each do |report|%>
+    <li>
+      <%= report.report_date %>
+      <%= report.title %>
+      <%= report.category %>
+      <%= report.content %>
+    </li>
+  <% end %>
+
+</ul>

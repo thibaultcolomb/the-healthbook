@@ -3,5 +3,5 @@ class Appointment < ApplicationRecord
   belongs_to :user
   has_many :reports, through: :appointment_attachements
 
-  validates :date, :content, presence: true
+  validates :appointment_date, :content, presence: true
 end
