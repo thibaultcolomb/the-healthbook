@@ -61,6 +61,14 @@
           <div class="report-content">
             <%= report.content %>
           </div>
+          <div class="report-edit">
+            <%= link_to edit_report_path(report) do%>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
+            <%= link_to report_path(report), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+              <i class="fa-regular fa-trash-can"></i>
+            <% end %>
+          </div>
         </div>
 
 
