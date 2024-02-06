@@ -1,6 +1,7 @@
 .reports {
   list-style-type: none;
   padding-left: 0;
+
 }
 
 .report-card {
@@ -8,7 +9,21 @@
   margin-bottom: 12px;
   display: flex;
   padding: 4px;
+  max-height: 70px;
+  overflow: hidden;
 }
+
+// .report-card .report-content {
+//   max-height: 30px;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   white-space: nowrap;
+// }
+
+// .report-card:hover .report-content {
+//   max-height: none;
+//   white-space: normal;
+// }
 
 .report-date {
   border-style: solid;
