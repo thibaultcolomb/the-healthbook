@@ -1,0 +1,16 @@
+<h2>New Doctor</h2>
+
+<%= simple_form_for @doctor do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :email %>
+    <%= f.input :specialty, collection: %w[Internal, Medicine, Surgery, Pediatrics ,Obstetrics and Gynecology
+                                            ,Psychiatry, Radiology, Anesthesiology, Emergency Medicine
+                                            , Pathology, Ophthalmology, Otolaryngology (ENT) , Dermatology, Neurology,
+                                            Urology, Orthopedics , Physical Medicine and Rehabilitation, Allergy and Immunology,
+                                             Infectious Diseases, Endocrinology, Cardiology]%>
+    <%= f.submit "Add doctor" %>
+    <% end %>
