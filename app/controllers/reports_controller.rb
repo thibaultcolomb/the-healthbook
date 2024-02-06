@@ -24,7 +24,11 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     @report.user = current_user
-    @report.content = convert_image_to_content
+
+    if params[:report][:photo].present?
+      @report.content = convert_image_to_content
+    end
+
     @report.save
 
     if @report.save
