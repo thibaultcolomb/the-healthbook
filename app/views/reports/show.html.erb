@@ -1,0 +1,45 @@
+<div class="main">
+  <div class="d-flex align-items-center mt-5">
+    <%= link_to reports_path do %>
+      <i class="fa-solid fa-arrow-left ms-3"></i>
+    <% end %>
+    <div class="mx-auto text-center">
+      <h3>Report</h3>
+    </div>
+  </div>
+
+
+  <div>
+    <%= link_to edit_report_path(@report) do%>
+      <i class="fa-solid fa-pen-to-square"></i>
+    <% end %>
+  </div>
+
+  <div>
+    <div>
+      <%= @report.report_date %>
+    </div>
+    <div>
+      <%# <p><%= @report.doctor.name %></p>
+      <p><%= @report.category %></p>
+    </div>
+    <div>
+      <%= @report.content%>
+    </div>
+  </div>
+
+
+  <div>
+    <p>Additional documents</p>
+    <div>
+
+    </div>
+  </div>
+
+  <div>
+    <%= link_to report_path(@report), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+      <i class="fa-regular fa-trash-can"></i>
+    <% end %>
+  </div>
+
+</div>

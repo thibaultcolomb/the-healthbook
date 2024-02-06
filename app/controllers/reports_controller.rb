@@ -13,6 +13,10 @@ class ReportsController < ApplicationController
     @categories = Report.pluck(:category).uniq
   end
 
+  def show
+    @report = Report.find(params[:id])
+  end
+
   def new
     @report = Report.new
   end
