@@ -1,4 +1,11 @@
-<h3>Medical history</h3>
+
+<div>
+  <%= link_to root_path do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
+  <h3>Medical history</h3>
+</div>
+
 
 <%= form_with url: reports_path, method: :get, class: "d-flex" do %>
   <%= text_field_tag :query,
@@ -10,6 +17,7 @@
 <% end %>
 
 <ul>
+  <%= link_to "All", reports_path %>
   <% @categories.each do |category|%>
   <li>
     <%= link_to category, reports_path(category: category) %>
@@ -17,7 +25,10 @@
   <% end %>
 </ul>
 
-<%= link_to "New report", new_report_path %>
+<%= link_to new_report_path do %>
+  <p>New </p>
+  <i class="fa-solid fa-plus"></i>
+<% end %>
 
 <ul>
   <% @reports.each do |report|%>
