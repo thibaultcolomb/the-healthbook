@@ -52,7 +52,7 @@
         <div class="report-details">
           <div class="report-head">
             <div class="report-title">
-              <%= report.title %>
+              <%= link_to report.title, report_path(report) %>
             </div>
             <div class="report-category">
               <%= report.category %>
