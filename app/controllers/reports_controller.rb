@@ -30,6 +30,22 @@ class ReportsController < ApplicationController
     end
   end
 
+  def edit
+    @report = Report.find(params[:id])
+  end
+
+  def update
+    @report = Report.find(params[:id])
+    @report = Report.update(report_params)
+    redirect_to report_path(@report)
+  end
+
+  def destroy
+    @report = Report.find(params[:id])
+    @report.destroy
+    redirect_to report_path(@report), status: :see_other
+  end
+
   private
 
   require 'net/http'
@@ -39,7 +55,7 @@ class ReportsController < ApplicationController
   end
 
   def convert_image_to_content
-    image_url = Cloudinary::Utils.cloudinary_url(@report.photo)
+    # image_url = Cloudinary::Utils.cloudinary_url(@report.photo)
     begin
       # uri = URI.parse(image_url)
       # response = Net::HTTP.get_response(uri) #  make an HTTP request to fetch the image data from the URL. The response object contains the image data.

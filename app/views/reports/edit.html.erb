@@ -1,0 +1,8 @@
+<div>
+  <%= link_to report_path(@report) do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
+  <h3>Edit report</h3>
+</div>
+
+<%= render "form", report: @report %>
