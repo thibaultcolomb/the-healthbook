@@ -4,4 +4,5 @@ class Appointment < ApplicationRecord
   has_many :reports, through: :appointment_attachements
 
   validates :appointment_date, :content, presence: true
+
 end

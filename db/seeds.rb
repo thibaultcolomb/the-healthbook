@@ -18,5 +18,5 @@ User.new(
   email: 'harri@gmail.com',
   password: 'password',
   password_confirmation: 'password'
-  
+
 )
