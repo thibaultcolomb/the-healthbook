@@ -20,6 +20,7 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     @report.user = current_user
+    @report.content = convert_image_to_content
     @report.save
 
     if @report.save
@@ -31,7 +32,22 @@ class ReportsController < ApplicationController
 
   private
 
+  require 'net/http'
+
   def report_params
-    params.require(:report).permit(:title, :category, :content, :report_date)
+    params.require(:report).permit(:title, :category, :content, :report_date, :photo)
+  end
+
+  def convert_image_to_content
+    image_url = Cloudinary::Utils.cloudinary_url(@report.photo)
+    begin
+      # uri = URI.parse(image_url)
+      # response = Net::HTTP.get_response(uri) #  make an HTTP request to fetch the image data from the URL. The response object contains the image data.
+      # tempfile = Tempfile.new(['image', '.png']).set_encoding('ASCII-8BIT') #  temporary file is created using Tempfile.new. The file is given a name starting with "image" and a ".png" extension to match the image format.
+      # tempfile.write(response.body)
+      # RTesseract.new(tempfile.path).to_s
+      uploaded_file = params[:report][:photo]
+      result = RTesseract.new(uploaded_file.path).to_s
+    end
   end
 end

@@ -2,6 +2,8 @@ source "https://rubygems.org"
 
 ruby "3.1.2"
 
+gem 'faker'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3"
 
@@ -28,6 +30,12 @@ gem "jbuilder"
 
 # Search
 gem "pg_search"
+
+# tesseract
+gem 'rtesseract'
+
+# cloudinary
+gem "cloudinary"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
