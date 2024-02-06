@@ -8,7 +8,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
 
     if @appointment.save
-      redirect_to appointment_path
+      redirect_to appointments_path
     else
       render :new, status: :unprocessable_entity
     end
