@@ -1,46 +1,64 @@
+
+
 <div class="main">
   <div class="d-flex align-items-center mt-5">
     <%= link_to reports_path do %>
       <i class="fa-solid fa-arrow-left ms-3"></i>
     <% end %>
+
     <div class="mx-auto text-center">
-      <h3>Report</h3>
+      <h2><%= @report.title %></h2>
     </div>
   </div>
 
   <div class="one-report-edit">
-    <%= link_to edit_report_path(@report) do%>
+      <%= link_to edit_report_path(@report) do %>
       <i class="fa-solid fa-pen-to-square"></i>
     <% end %>
-  </div>
-
-  <div class="one-report">
-    <div>
-      <div class="">
-        <%=@report.title %>
-      </div>
-      <div class="one-report-date">
-        <%=@report.report_date %>
-      </div>
-      <div>
-      <%# <p><%= @report.doctor.name %></p>
-        <p><%= @report.category %></p>
-      </div>
-      <div>
-        <%= @report.content%>
-      </div>
-    </div>
-  </div>
-  <div>
-      <p>Additional documents</p>
-      <div>
-      </div>
-    </div>
-
-    <div>
-      <%= link_to reports_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
-        <i class="fa-regular fa-trash-can"></i>
+      <%= link_to share_path do %>
+      <i class="fa-solid fa-share"></i>
+    <% end %>
+      <%= link_to report_path(@report), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+      <i class="fa-regular fa-trash-can"></i>
       <% end %>
-    </div>
+  </div>
 
+
+  <%# start card for the report %>
+  <div class="one-report-card">
+    <div class="one-report-date">
+      <div >
+        <div class="">
+          <%= @report.report_date.day %>
+        </div>
+        <div class="">
+          <%= (Date::MONTHNAMES[@report.report_date.month]).first(3) %>
+        </div>
+      </div>
+    </div>
+    <div class="one-report-details">
+    <h4><%=@report.doctor.first_name + " " + @report.doctor.last_name + " | " + @report.doctor.specialty %></h4>
+      </div>
+      </div>
+    </div>
+  </div>
+  <%# end of card for the report %>
+
+  <%# start reports content %>
+<div class="one-report-content">
+ <%= @report.content %>
+</div>
+ <%# end reports content %>
+</div>
+
+
+<div class="one-report-documents">
+<h3>original documents</h3>
+<%#= @report.uploaded_file %>
+</div>
+
+<div>
+   <%= link_to reports_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+     <i class="fa-regular fa-trash-can"></i>
+   <% end %>
 </div>

@@ -1,7 +1,22 @@
-<h2 style="text-align: center;">Your Appointments</h2>
-<h3 style="text-align: center;">Upcoming Appointments</h3>
+<div class="main">
+
+  <div class="d-flex align-items-center mt-5">
+    <%= link_to root_path do %>
+      <i class="fa-solid fa-arrow-left ms-3"></i>
+    <% end %>
+    <div class="mx-auto text-center">
+      <h2>Your Appointments</h2>
+    </div>
+  </div>
+
 
 <div class="appointment-cards">
+<h3>Upcoming Appointments</h3>
+  <div class="d-flex justify-content-end">
+    <%= link_to new_appointment_path do %>
+      <i class="fa-solid fa-plus fa-2x"></i>
+    <% end %>
+  </div>
 <% @appointments.each do |appointment| %>
 <div class="appointment card" style="width: 18rem;">
     <div class="card-body">
@@ -10,8 +25,9 @@
       <h3 class="card-title"><%= appointment.appointment_date.month %></h3>
     </div>
       <div>
-        <%= "#{appointment.appointment_date} #{appointment.time.strftime("%I:%M:%S %p")}" %>
+        <%= "#{appointment.appointment_date} #{appointment.appointment_date.strftime("%I:%M:%S %p")}" %>
         <%# .strftime("%A, %d %b %Y %l:%M %p) %>
+
         <p class="card-subtitle mb-2 text-muted"><%= appointment.doctor.first_name + " " + appointment.doctor.last_name %></p>
 
         <%= link_to edit_appointment_path(appointment), class: "btn btn-secondary mt-5 me-1" do %>
@@ -27,6 +43,4 @@
 <% end %>
 </div>
 
-
-<button  type="button" class="btn btn-primary">Primary</button>
-<button type="button" class="btn btn-info">Secondary</button>
+</div>

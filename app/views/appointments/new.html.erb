@@ -1,5 +1,12 @@
 <div class='main'>
-  <h2 style="text-align: center; mab-3;">New Appointments</h2>
+ <div class="d-flex align-items-center mt-5">
+    <%= link_to appointments_path do %>
+      <i class="fa-solid fa-arrow-left ms-3"></i>
+    <% end %>
+    <div class="mx-auto text-center">
+      <h2>New Appointment</h2>
+    </div>
+  </div>
 
   <%= simple_form_for [@appointment] do |f| %>
   <%= f.input :appointment_date,
@@ -11,12 +18,12 @@
 
   <%= f.input :content,
               as: :file %>
-
+<%#
   <%= f.association :doctor, label: "Doctor", collection: Doctor.all, label_method: :first_name, value_method: :id, include_blank: "Select Doctor" %>
+  <%= f.association :doctor, label: "Doctor", collection: Doctor.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name}", doctor.id] }, include_blank: "Select Doctor" %>
 
 
   <%= f.submit "Create Appointment", class: 'btn btn-primary' %>
 
   <% end %>
-  <%= link_to "Back To Appointments", appointments_path, class: "btn btn-secondary mt-5" %>
 </div>

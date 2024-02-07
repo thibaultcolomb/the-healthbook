@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-
+  require 'rqrcode'
   def index
 
     if params[:query].present?
@@ -15,6 +15,7 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
+
   end
 
   def new
@@ -24,6 +25,8 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     @report.user = current_user
+    @report.doctor = Doctor.find(params[:report] [:doctor_id])
+
 
     if params[:report][:photo].present?
       @report.content = convert_image_to_content
@@ -32,7 +35,6 @@ class ReportsController < ApplicationController
     end
 
     @report.save
-
     if @report.save
       redirect_to reports_path
     else
@@ -56,12 +58,34 @@ class ReportsController < ApplicationController
     redirect_to report_path(@report), status: :see_other
   end
 
+  def share
+    @report = Report.find(params[:id])
+    @doctors = Doctor.all
+    @link_for_qr_code = "www.thehealthbook.online/reports/#{@report.id}"
+    @qr_code = RQRCode::QRCode.new(@link_for_qr_code)
+    @svg = @qr_code.as_svg(
+      offset: 0,
+      fill: 'white',
+      color: '64CCC5',
+      shape_rendering: 'crispEdges',
+      standalone: true,
+      module_size: 4
+    )
+
+  end
+
+
+
+
+
   private
 
   require 'net/http'
 
+
+
   def report_params
-    params.require(:report).permit(:title, :category, :content, :report_date, :photo)
+    params.require(:report).permit(:title, :category, :content, :report_date, :photo, :qr_code, :doctor_id, :doctor_first_name, :doctor_last_name)
   end
 
   def convert_image_to_content

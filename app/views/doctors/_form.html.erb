@@ -1,14 +1,5 @@
 <div class='main'>
- <div class="d-flex align-items-center mt-5">
-    <%= link_to doctors_path do %>
-      <i class="fa-solid fa-arrow-left ms-3"></i>
-    <% end %>
-    <div class="mx-auto text-center">
-      <h2>New Doctor</h2>
-    </div>
-  </div>
-
-<%= simple_form_for @doctor do |f| %>
+  <%= simple_form_for @doctor do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -22,3 +13,4 @@
                                              Infectious Diseases, Endocrinology, Cardiology]%>
     <%= f.submit "Add doctor" %>
     <% end %>
+</div>
