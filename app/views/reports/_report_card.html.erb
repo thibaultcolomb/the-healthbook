@@ -1,0 +1,33 @@
+ <li class="report-card">
+    <div class="report-date">
+      <div >
+        <div class="">
+          <%= report.report_date.day %>
+        </div>
+        <div class="">
+          <%= (Date::MONTHNAMES[report.report_date.month]).first(3) %>
+        </div>
+      </div>
+    </div>
+    <div class="report-details">
+      <div class="report-head">
+        <div class="report-title">
+          <%= link_to report.title, report_path(report) %>
+        </div>
+        <div class="report-category">
+          <%= report.category %>
+        </div>
+      </div>
+      <div class="report-content">
+        <%= report.content %>
+      </div>
+      <div class="report-edit">
+        <%= link_to edit_report_path(report) do%>
+          <i class="fa-solid fa-pen-to-square"></i>
+        <% end %>
+        <%= link_to report_path(report), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+          <i class="fa-regular fa-trash-can"></i>
+        <% end %>
+      </div>
+    </div>
+  </li>
