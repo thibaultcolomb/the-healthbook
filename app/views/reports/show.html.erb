@@ -1,3 +1,5 @@
+
+
 <div class="main">
   <div class="d-flex align-items-center mt-5">
     <%= link_to reports_path do %>
@@ -40,13 +42,12 @@
       <div class="one-report-head">
         <div class="one-report-title">
           <%= @report.title %>
-        </div>
-        <div class="one-report-category">
-          <%= @report.category %>
+
         </div>
       </div>
+    <%=@report.doctor.first_name + " " + @report.doctor.last_name + " | " + @report.doctor.specialty %>
       <div class="one-report-content">
-        <%= @report.content %>
+       <%= @report.content %>
       </div>
       </div>
     </div>
