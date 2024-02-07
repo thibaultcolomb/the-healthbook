@@ -1,10 +1,8 @@
 .appointment.card {
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  width: 370px;
-  margin: 20px auto;
-
-
+  width: 320px;
+  margin: 10px;
 }
 
 .card-body {
@@ -15,10 +13,17 @@
 .date {
   background-color: #FFF6E9;
   text-align: center;
-  padding: 10px;
+  padding: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 100px;
 }
 
 .card-text {
   font-weight: bold;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
