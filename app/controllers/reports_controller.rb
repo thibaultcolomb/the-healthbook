@@ -54,6 +54,10 @@ class ReportsController < ApplicationController
     redirect_to report_path(@report), status: :see_other
   end
 
+  def share
+
+  end
+
   private
 
   require 'net/http'
