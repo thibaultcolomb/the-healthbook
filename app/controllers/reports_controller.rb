@@ -33,7 +33,6 @@ class ReportsController < ApplicationController
     end
 
     @report.save
-
     if @report.save
       redirect_to reports_path
     else
