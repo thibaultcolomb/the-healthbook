@@ -56,7 +56,7 @@ class ReportsController < ApplicationController
 
   def share
     @report = Report.find(params[:id])
-    @link_for_qr_code = "http://127.0.0.1:3000/reports/#{}"
+    @link_for_qr_code = "www.thehealthbook.online/reports/#{@report.id}"
     @qr_code = RQRCode::QRCode.new(@link_for_qr_code)
     @svg = @qr_code.as_svg(
       offset: 0,
