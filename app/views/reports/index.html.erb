@@ -13,10 +13,10 @@
     <%= form_with url: reports_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
             params[:query],
-            class: "form-control bg-info",
+            class: "form-control bg-info p-0 ps-1",
             placeholder: "Type a keyword"
         %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary m-0 p-0 ms-1" %>
     <% end %>
   </div>
 
