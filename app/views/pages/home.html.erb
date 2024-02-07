@@ -3,11 +3,9 @@
 
 
 <%# display the current users appointments %>
-<h3>Your next appointment</h3>
 <% next_appointment = current_user.appointments.where('appointment_date > ?', Time.now).order(appointment_date: :asc).first %>
-
-
-<% if next_appointment %>
+<% if next_appointment.present? %>
+  <h3>Your next appointment</h3>
  <div class="appointment card" style="display: flex; justify-content: center;">
     <div class="card-body">
     <div class="date d-flex flex-column align-items-center">
@@ -25,6 +23,8 @@
       </div>
     </div>
   </div>
+<% else %>
+  <h3>You have no upcoming appointments</h3>
 <% end %>
 
 <div class="button-container">
