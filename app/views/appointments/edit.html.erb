@@ -1,22 +1,9 @@
 <div class='main'>
-  <%= simple_form_for [@appointment] do |f| %>
-  <%= f.input :appointment_date,
-              as: :string,
-              input_html: { data: { controller: "datepicker" } },
-              class: "bg-light" %>
-
-<%= f.input :time,
-              as: :time %>
-
-  <%= f.input :content,
-              as: :file %>
-
-  <%# <%= f.association :doctor, label: "Doctor", collection: Doctor.all, label_method: :name, value_method: :id, include_blank: "Select Doctor" %>
-  <%= f.association :doctor, label: "Doctor", collection: Doctor.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name}", doctor.id] }, include_blank: "Select Doctor" %>
-
-  <%= f.button :submit, class: 'btn btn-primary' %>
-
-
-<% end %>
-
+  <h3 style="text-align: center; mb-3;">Edit appointment</h3>
+  <%= link_to appointments_path do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
 </div>
+
+<%= render "form", report: @appointment %>
+```
