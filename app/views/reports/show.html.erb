@@ -3,6 +3,7 @@
     <%= link_to reports_path do %>
       <i class="fa-solid fa-arrow-left ms-3"></i>
     <% end %>
+
     <div class="mx-auto text-center">
       <h3>Report</h3>
     </div>
@@ -12,6 +13,9 @@
   <div>
     <%= link_to edit_report_path(@report) do%>
       <i class="fa-solid fa-pen-to-square"></i>
+    <% end %>
+      <%= link_to share_path do %>
+      <i class="fa-solid fa-share ms-3"></i>
     <% end %>
   </div>
 
