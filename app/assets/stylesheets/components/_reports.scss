@@ -12,7 +12,17 @@
   display: flex;
   align-items: center;
   margin-bottom: 8px;
+  position:relative;
+  border-radius: 4px;
 }
+
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  }
 
 .report-date {
   background-color: #64CCC5;
@@ -32,15 +42,20 @@
 }
 
 .report-details {
-  padding: 16px;
+  justify-items: start;
+  padding: 4px;
   width: 85%;
   font-size: 12px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
-  margin-top: 8px;
+  margin-top: 0px;
   color: #176B87;
-
+  max-height: 100%;
+  overflow: hidden;
+  display :flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .report-head {
@@ -49,4 +64,28 @@
   font-size: 16px;
   font-weight: bold;
   margin: 0;
+  flex-shrink: 0;
+}
+
+.report-edit {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: end;
+}
+
+
+.report-category {
+  color: #64CCC5;
+}
+
+.category-tag {
+  background-color: #D9D9D9;
+  color: #176B87;
+  padding: 4px 6px;
+}
+
+.report-content {
+  max-height: 30%;
+  flex-grow: 1;
+  overflow: hidden;
 }

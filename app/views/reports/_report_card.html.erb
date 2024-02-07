@@ -12,22 +12,21 @@
     <div class="report-details">
       <div class="report-head">
         <div class="report-title">
-          <%= link_to report.title, report_path(report) %>
+          <%= link_to report.title, report_path(report), class: "text-decoration-none", style: "color: #176B87;" %>
         </div>
         <div class="report-category">
           <%= report.category %>
         </div>
       </div>
-      <div class="report-content">
-        <%= report.content %>
-      </div>
+     
       <div class="report-edit">
         <%= link_to edit_report_path(report) do%>
           <i class="fa-solid fa-pen-to-square"></i>
         <% end %>
         <%= link_to report_path(report), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
-          <i class="fa-regular fa-trash-can"></i>
+          <i class="fa-regular fa-trash-can ms-1"></i>
         <% end %>
       </div>
     </div>
+    <%= link_to '', report_path(report), class: 'card-link'  %>
   </li>

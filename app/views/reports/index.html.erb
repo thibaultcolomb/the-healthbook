@@ -5,7 +5,7 @@
       <i class="fa-solid fa-arrow-left ms-3"></i>
     <% end %>
     <div class="mx-auto text-center">
-      <h3>Medical history</h3>
+      <h2>Medical history</h2>
     </div>
   </div>
 
@@ -13,7 +13,7 @@
     <%= form_with url: reports_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
             params[:query],
-            class: "form-control",
+            class: "form-control bg-info",
             placeholder: "Type a keyword"
         %>
       <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
@@ -22,17 +22,17 @@
 
 
   <ul class="inline-list">
-    <%= link_to "All", reports_path %>
+    <%= link_to "All", reports_path, class:"category-tag rounded-pill text-decoration-none", style: "color: #176B87; font-size: 12px;" %>
     <% @categories.each do |category|%>
-    <li>
-      <%= link_to category, reports_path(category: category) %>
+    <li class="category-tag rounded-pill">
+      <%= link_to category, reports_path(category: category), class: "text-decoration-none", style: "color: #176B87; font-size: 12px;" %>
     </li>
     <% end %>
   </ul>
 
   <div class="d-flex justify-content-end">
     <%= link_to new_report_path do %>
-      <i class="fa-solid fa-plus"></i>
+      <i class="fa-solid fa-plus fa-2x"></i>
     <% end %>
   </div>
 

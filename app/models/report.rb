@@ -13,4 +13,5 @@ class Report < ApplicationRecord
   pg_search_scope :search_by_title, against: [:title], using: { tsearch: { prefix: true } }
 
   has_one_attached :photo
+  has_one_attached :pdf
 end

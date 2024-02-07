@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-
+  require 'rqrcode'
   def index
 
     if params[:query].present?
@@ -15,6 +15,7 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
+
   end
 
   def new
@@ -24,13 +25,16 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     @report.user = current_user
+    @report.doctor = Doctor.find(params[:report] [:doctor_id])
+
 
     if params[:report][:photo].present?
       @report.content = convert_image_to_content
+    elsif params[:report][:pdf].present?
+      @report.content = convert_pdf_to_text
     end
 
     @report.save
-
     if @report.save
       redirect_to reports_path
     else
@@ -56,6 +60,7 @@ class ReportsController < ApplicationController
 
   def share
     @report = Report.find(params[:id])
+    @doctors = Doctor.all
     @link_for_qr_code = "www.thehealthbook.online/reports/#{@report.id}"
     @qr_code = RQRCode::QRCode.new(@link_for_qr_code)
     @svg = @qr_code.as_svg(
@@ -66,15 +71,21 @@ class ReportsController < ApplicationController
       standalone: true,
       module_size: 4
     )
+
   end
+
+
+
 
 
   private
 
   require 'net/http'
 
+
+
   def report_params
-    params.require(:report).permit(:title, :category, :content, :report_date, :photo, :qr_code)
+    params.require(:report).permit(:title, :category, :content, :report_date, :photo, :qr_code, :doctor_id, :doctor_first_name, :doctor_last_name)
   end
 
   def convert_image_to_content
@@ -87,6 +98,26 @@ class ReportsController < ApplicationController
       # RTesseract.new(tempfile.path).to_s
       uploaded_file = params[:report][:photo]
       result = RTesseract.new(uploaded_file.path).to_s
+
+      # formatted_result = result.gsub(/\. /, ".\n")
+      # Example: Adding HTML formatting
+      # formatted_result = "<p>#{ocr_result}</p>"
+      # Example: Extracting specific information using regular expressions
+      # dates = result.scan(/\b\d{2}\/\d{2}\/\d{4}\b/)
     end
   end
+
+  def convert_pdf_to_text
+    pdf_io = params[:report][:pdf].tempfile
+    result = PDF::Reader.new(pdf_io).pages.first.text
+  end
+
+  # def format_content(to_be_formatted)
+  #     client = OpenAI::Client.new
+  #     chaptgpt_response = client.chat(parameters: {
+  #       model: "gpt-3.5-turbo",
+  #       messages: [{ role: "user", content: "Format the report content: #{to_be_formatted}. Give me only the text of report, without any of your own answer like 'Here is the formatted content'."}]
+  #     })
+  #     chaptgpt_response["choices"][0]["message"]["content"]
+  # end
 end

@@ -1,6 +1,22 @@
-<h2>Share <%= @report.title%></h2>
+</div class="main">
+  <%= link_to report_path(@report) do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
+</div>
+
+<h2>Share <%= @report.title %></h2>
 <h3>by QR Code</h3>
-<div class = "qr_code">
+<div class="qr_code">
   <%= @svg.html_safe %>
 </div>
-<h3>by e-mail</h3>
+
+
+<div class="email" style="text-align: center;">
+  <h2>Share <%= @report.title %></h2>
+  <h3>by E-mail</h3>
+  <%= form_with url: report_path(@report), method: :post, html: { style: "display: flex; justify-content: center; align-items: center;" } do |f| %>
+    <%= f.label :doctor_email, "Select Doctor:" %>
+    <%= f.select :doctor_email, Doctor.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name} (#{doctor.email})", doctor.email] }, { include_blank: "Select Doctor" }, { style: 'width: 50%' } %>
+    <%= f.submit "Share by email", class: "btn btn-primary", style: "ml-10;" %>
+  <% end %>
+</div>

@@ -1,6 +1,23 @@
-<h2>Your Appointments</h2>
 
-<div class="card-container">
+<div class="main">
+
+  <div class="d-flex align-items-center mt-5">
+    <%= link_to root_path do %>
+      <i class="fa-solid fa-arrow-left ms-3"></i>
+    <% end %>
+    <div class="mx-auto text-center">
+      <h2>Your Appointments</h2>
+    </div>
+  </div>
+
+
+<div class="appointment-cards">
+<h3>Upcoming Appointments</h3>
+  <div class="d-flex justify-content-end">
+    <%= link_to new_appointment_path do %>
+      <i class="fa-solid fa-plus fa-2x"></i>
+    <% end %>
+  </div>
 <% @appointments.each do |appointment| %>
   <div class="appointment card" style="display: flex; justify-content: center;">
     <div class="card-body">
@@ -28,4 +45,5 @@
     </div>
   </div>
 <% end %>
+</div>
 </div>
