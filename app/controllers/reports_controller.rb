@@ -27,6 +27,8 @@ class ReportsController < ApplicationController
 
     if params[:report][:photo].present?
       @report.content = convert_image_to_content
+    elsif params[:report][:pdf].present?
+      @report.content = convert_pdf_to_text
     end
 
     @report.save
@@ -79,6 +81,11 @@ class ReportsController < ApplicationController
       # Example: Extracting specific information using regular expressions
       # dates = result.scan(/\b\d{2}\/\d{2}\/\d{4}\b/)
     end
+  end
+
+  def convert_pdf_to_text
+    pdf_io = params[:report][:pdf].tempfile
+    result = PDF::Reader.new(pdf_io).pages.first.text
   end
 
   # def format_content(to_be_formatted)
