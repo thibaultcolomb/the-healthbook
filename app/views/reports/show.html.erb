@@ -37,7 +37,9 @@
       </div>
     </div>
     <div class="one-report-details">
-    <h4><%=@report.doctor.first_name + " " + @report.doctor.last_name + " | " + @report.doctor.specialty %></h4>
+      <% if @report.doctor.present? %>
+        <h4><%=@report.doctor.first_name + " " + @report.doctor.last_name + " | " + @report.doctor.specialty %></h4>
+      <% end %>
       </div>
       </div>
     </div>
