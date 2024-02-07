@@ -55,15 +55,23 @@ class ReportsController < ApplicationController
   end
 
   def share
-
+    @report = Report.find(params[:id])
+    @qr_code = RQRCode::QRCode.new(@report.qr_code)
+    @svg = @qr_code.as_svg(
+      offset: 0,
+      color: '000',
+      shape_rendering: 'crispEdges',
+      standalone: true
+    )
   end
+
 
   private
 
   require 'net/http'
 
   def report_params
-    params.require(:report).permit(:title, :category, :content, :report_date, :photo)
+    params.require(:report).permit(:title, :category, :content, :report_date, :photo, :qr_code)
   end
 
   def convert_image_to_content

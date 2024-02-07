@@ -6,6 +6,7 @@
     <%= f.input :report_date %>
     <%= f.input :category, collection: ['Blood Tests', 'Imaging', 'Surgery', 'Pathology', 'Cardiology', 'Endoscopy', 'Pulmonary Function Test (PFT)', 'Genetic Testing', 'Allergy Testing', 'Neurological', 'Dermatology', 'Obstetric and Gynecological', 'Urology', 'Orthopedic', 'Gastroenterology', 'Ophthalmology', 'Nuclear Medicine', 'Psychiatric', 'Rehabilitation', 'Dental']%>
     <%= f.input :content %>
+    <%= f.input :qr_code %>
     <%= f.input :photo, as: :file %>
     <%= f.submit  %>
     <% end %>
