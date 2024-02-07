@@ -4,7 +4,7 @@
 
     <%= f.input :title %>
     <%= f.input :report_date %>
-    <%= f.input :doctor_id , collection: Doctor.all %>
+    <%= f.association :doctor, label: "Doctor", collection: Doctor.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name}", doctor.id] }, include_blank: "Select Doctor" %>
     <%= f.input :category, collection: ['Blood Tests', 'Imaging', 'Surgery', 'Pathology', 'Cardiology', 'Endoscopy', 'Pulmonary Function Test (PFT)', 'Genetic Testing', 'Allergy Testing', 'Neurological', 'Dermatology', 'Obstetric and Gynecological', 'Urology', 'Orthopedic', 'Gastroenterology', 'Ophthalmology', 'Nuclear Medicine', 'Psychiatric', 'Rehabilitation', 'Dental']%>
     <%= f.input :content %>
     <%= f.input :photo, as: :file %>
