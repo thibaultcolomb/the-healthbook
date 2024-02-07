@@ -51,7 +51,14 @@
  <%# end reports content %>
 </div>
 
+
 <div class="one-report-documents">
 <h3>original documents</h3>
 <%#= @report.uploaded_file %>
+</div>
+
+<div>
+   <%= link_to reports_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+     <i class="fa-regular fa-trash-can"></i>
+   <% end %>
 </div>
