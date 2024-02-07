@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :appointments
   resources :doctors
+  get "/reports/:id/share", to: "reports#share", as: :share
 end

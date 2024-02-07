@@ -54,12 +54,27 @@ class ReportsController < ApplicationController
     redirect_to report_path(@report), status: :see_other
   end
 
+  def share
+    @report = Report.find(params[:id])
+    @link_for_qr_code = "http://127.0.0.1:3000/reports/#{}"
+    @qr_code = RQRCode::QRCode.new(@link_for_qr_code)
+    @svg = @qr_code.as_svg(
+      offset: 0,
+      fill: 'white',
+      color: '64CCC5',
+      shape_rendering: 'crispEdges',
+      standalone: true,
+      module_size: 4
+    )
+  end
+
+
   private
 
   require 'net/http'
 
   def report_params
-    params.require(:report).permit(:title, :category, :content, :report_date, :photo)
+    params.require(:report).permit(:title, :category, :content, :report_date, :photo, :qr_code)
   end
 
   def convert_image_to_content

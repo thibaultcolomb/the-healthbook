@@ -11,9 +11,11 @@
   <%= f.input :content,
               as: :file %>
 
-  <%= f.association :doctor, label: "Doctor", collection: Doctor.all, label_method: :name, value_method: :id, include_blank: "Select Doctor" %>
+  <%# <%= f.association :doctor, label: "Doctor", collection: Doctor.all, label_method: :name, value_method: :id, include_blank: "Select Doctor" %>
+  <%= f.association :doctor, label: "Doctor", collection: Doctor.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name}", doctor.id] }, include_blank: "Select Doctor" %>
 
   <%= f.button :submit %>
-<% end %>
+  <% end %>
+
 
 </div>
