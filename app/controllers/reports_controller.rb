@@ -15,6 +15,7 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
+
   end
 
   def new
@@ -24,6 +25,8 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     @report.user = current_user
+    @report.doctor = Doctor.find(params[:report] [:doctor_id])
+
 
     if params[:report][:photo].present?
       @report.content = convert_image_to_content
@@ -32,7 +35,6 @@ class ReportsController < ApplicationController
     end
 
     @report.save
-
     if @report.save
       redirect_to reports_path
     else
@@ -83,7 +85,7 @@ class ReportsController < ApplicationController
 
 
   def report_params
-    params.require(:report).permit(:title, :category, :content, :report_date, :photo, :qr_code)
+    params.require(:report).permit(:title, :category, :content, :report_date, :photo, :qr_code, :doctor_id, :doctor_first_name, :doctor_last_name)
   end
 
   def convert_image_to_content
