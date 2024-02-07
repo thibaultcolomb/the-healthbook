@@ -18,11 +18,11 @@
     <% end %>
   </div>
 <% @appointments.each do |appointment| %>
-<div class="appointment card" style="width: 18rem;">
+<div class="appointment card">
     <div class="card-body">
     <div class="date">
       <h3 class="card-title"><%= appointment.appointment_date.day %></h3>
-      <h3 class="card-title"><%= appointment.appointment_date.month %></h3>
+      <h3 class="card-title"><%= (Date::MONTHNAMES[appointment.appointment_date.month]).first(3) %></h3>
     </div>
       <div>
         <%= "#{appointment.appointment_date} #{appointment.appointment_date.strftime("%I:%M:%S %p")}" %>
