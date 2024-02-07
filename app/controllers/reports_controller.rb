@@ -59,9 +59,11 @@ class ReportsController < ApplicationController
     @qr_code = RQRCode::QRCode.new(@report.qr_code)
     @svg = @qr_code.as_svg(
       offset: 0,
-      color: '000',
+      fill: 'white',
+      color: '64CCC5',
       shape_rendering: 'crispEdges',
-      standalone: true
+      standalone: true,
+      module_size: 4
     )
   end
 
