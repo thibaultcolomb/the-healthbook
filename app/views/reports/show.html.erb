@@ -7,23 +7,22 @@
     <% end %>
 
     <div class="mx-auto text-center">
-      <h3>Report</h3>
+      <h2><%= @report.title %></h2>
     </div>
   </div>
 
   <div class="one-report-edit">
-    <%= link_to edit_report_path(@report) do%>
+      <%= link_to edit_report_path(@report) do %>
       <i class="fa-solid fa-pen-to-square"></i>
     <% end %>
       <%= link_to share_path do %>
-      <i class="fa-solid fa-share ms-3"></i>
+      <i class="fa-solid fa-share"></i>
     <% end %>
-  </div>
-   <div>
-      <%= link_to report_path(@report), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
-        <i class="fa-regular fa-trash-can"></i>
+      <%= link_to report_path(@report), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+      <i class="fa-regular fa-trash-can"></i>
       <% end %>
-    </div>
+  </div>
+
 
   <%# card for the report %>
 
@@ -41,7 +40,7 @@
     <div class="one-report-details">
       <div class="one-report-head">
         <div class="one-report-title">
-          <%= @report.title %>
+
 
         </div>
       </div>
