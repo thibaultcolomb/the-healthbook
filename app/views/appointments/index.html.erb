@@ -10,7 +10,8 @@
       <h3 class="card-title"><%= appointment.appointment_date.month %></h3>
     </div>
       <div>
-        <%= "#{appointment.appointment_date} #{appointment.time.strftime("%I:%M:%S %p")}" %>
+        <%= "#{appointment.appointment_date} #{appointment.appointment_date.strftime("%I:%M:%S %p")}" %>
+        <%# .strftime("%A, %d %b %Y %l:%M %p) %>
 
         <p class="card-subtitle mb-2 text-muted"><%= appointment.doctor.first_name + " " + appointment.doctor.last_name %></p>
 

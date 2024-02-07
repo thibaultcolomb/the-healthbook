@@ -1,1 +1,19 @@
 // Specific CSS for your home-page
+
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Aligns items along the cross-axis (vertically in this case) */
+}
+
+.btn-primary {
+  display: flex;
+  margin: 10px;
+  width: 200px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+
+
+}
