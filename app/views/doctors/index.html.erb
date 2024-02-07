@@ -1,19 +1,22 @@
-<h2 align="center">Your doctors</h2>
+<h2 style="text-align: center;">Your Doctors</h2>
 
 <div class="doctor-cards">
-<% @doctors.each do |doctor| %>
-<div class="doctor card" style="width: 18rem;">
+  <% @doctors.each do |doctor| %>
+    <div class="doctor card" style="width: 18rem;">
       <h3 class="card-title"><%= doctor.first_name + " " + doctor.last_name %></h3>
       <p class="card-text"><%= doctor.specialty %></p>
       <div>
-        <a href="#" class="fa-regular fa-pen-to-square"></a>
-        <a href="#" class="fa-solid fa-trash"></a>
+        <%= link_to edit_doctor_path(doctor), class: "btn btn-secondary mt-5 me-1" do %>
+          <i class="fa-regular fa-pen-to-square"></i>
+        <% end %>
+
+        <%= link_to doctor_path(doctor), data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"}, class: "btn btn-secondary mt-5" do %>
+          <i class="fa-regular fa-trash-can"></i>
+        <% end %>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 </div>
 
-
-<button  type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-primary">Primary</button>
 <button type="button" class="btn btn-info">Secondary</button>
