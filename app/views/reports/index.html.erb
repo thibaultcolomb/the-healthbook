@@ -41,12 +41,15 @@
     <% @reports.each do |report|%>
       <li class="report-card">
         <div class="report-date">
-          <div class="">
-            <%= report.report_date.day %>
+          <div >
+            <div class="d-flex justify-content-center">
+              <%= report.report_date.day %>
+            </div>
+            <div class="d-flex justify-content-center">
+              <%= (Date::MONTHNAMES[report.report_date.month]).first(3) %>
+            </div>
           </div>
-          <div>
-            <%= (Date::MONTHNAMES[report.report_date.month]).first(3) %>
-          </div>
+
 
         </div>
         <div class="report-details">
@@ -70,8 +73,6 @@
             <% end %>
           </div>
         </div>
-
-
       </li>
     <% end %>
 
