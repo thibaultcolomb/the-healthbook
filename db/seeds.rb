@@ -13,7 +13,7 @@ require 'faker' # Include Faker gem at the beginning
 
 specialty = ["Internal Medicine", "Surgery", "Pediatrics", "Radiology"]
 
-category = ['Blood test', 'MRI', 'X-Ray', 'Ultrasound', 'Other']
+category = ['Blood Tests', 'Imaging', 'Surgery', 'Pathology', 'Cardiology', 'Endoscopy', 'Pulmonary Function Test (PFT)', 'Genetic Testing', 'Allergy Testing', 'Neurological', 'Dermatology', 'Obstetric and Gynecological', 'Urology', 'Orthopedic', 'Gastroenterology', 'Ophthalmology', 'Nuclear Medicine', 'Psychiatric', 'Rehabilitation', 'Dental'] 
 
 harri = User.create!(
   email: 'harri@gmail.com',
@@ -64,7 +64,7 @@ users.each do |user|
 
   3.times do
     appointment = Appointment.create!(
-      appointment_date: Faker::Date.between(from: Date.today, to: 1.month.from_now),
+      appointment_date: Faker::Time.between(from: Date.today, to: 1.month.from_now),
       content: Faker::Lorem.sentence(word_count: 3),
       doctor_id: user.doctors.sample.id,
 
