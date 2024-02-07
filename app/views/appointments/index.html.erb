@@ -1,5 +1,5 @@
-<h2 style="text-align: center;">Your Appointments</h2>
-<h3 style="text-align: center;">Upcoming Appointments</h3>
+<h2>Your Appointments</h2>
+<h3>Upcoming Appointments</h3>
 
 <div class="appointment-cards">
 <% @appointments.each do |appointment| %>
@@ -12,6 +12,7 @@
       <div>
         <%= "#{appointment.appointment_date} #{appointment.appointment_date.strftime("%I:%M:%S %p")}" %>
         <%# .strftime("%A, %d %b %Y %l:%M %p) %>
+
         <p class="card-subtitle mb-2 text-muted"><%= appointment.doctor.first_name + " " + appointment.doctor.last_name %></p>
 
         <%= link_to edit_appointment_path(appointment), class: "btn btn-secondary mt-5 me-1" do %>

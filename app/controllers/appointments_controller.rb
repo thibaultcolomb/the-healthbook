@@ -46,16 +46,8 @@ class AppointmentsController < ApplicationController
     params.require(:appointment).permit(:appointment_date, :time, :content, :doctor_id)
   end
 
-end
-
-
-
-  private
-
-  def appointment_params
-    params.require(:appointment).permit(:appointment_date, :content, :doctor_id)
-  end
-
   def set_appointment
     @appointment = Appointment.find(params[:id])
   end
+
+end
