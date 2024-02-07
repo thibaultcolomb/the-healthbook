@@ -1,5 +1,12 @@
 <div class='main'>
-  <h2 style="text-align: center; mb-3;">New Appointments</h2>
+ <div class="d-flex align-items-center mt-5">
+    <%= link_to appointments_path do %>
+      <i class="fa-solid fa-arrow-left ms-3"></i>
+    <% end %>
+    <div class="mx-auto text-center">
+      <h2>New Appointment</h2>
+    </div>
+  </div>
 
   <%= simple_form_for [@appointment] do |f| %>
   <%= f.input :appointment_date,
@@ -19,5 +26,4 @@
   <%= f.submit "Create Appointment", class: 'btn btn-primary' %>
 
   <% end %>
-  <%= link_to "Back To Appointments", appointments_path, class: "btn btn-secondary mt-5" %>
 </div>
