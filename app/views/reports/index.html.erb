@@ -22,7 +22,7 @@
 
 
   <ul class="inline-list">
-    <%= link_to "All", reports_path, class:"category-tag rounded-pill", style: "color: #176B87; font-size: 12px;" %>
+    <%= link_to "All", reports_path, class:"category-tag rounded-pill text-decoration-none", style: "color: #176B87; font-size: 12px;" %>
     <% @categories.each do |category|%>
     <li class="category-tag rounded-pill">
       <%= link_to category, reports_path(category: category), class: "text-decoration-none", style: "color: #176B87; font-size: 12px;" %>
