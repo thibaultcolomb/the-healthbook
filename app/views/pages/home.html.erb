@@ -1,6 +1,5 @@
 
-<%= link_to "Reports", reports_path, class: "btn btn-primary" %>
-<%= link_to "Appointments", appointments_path, class: "btn btn-primary" %>
+
 
 
 <%# display the current users appointments %>
@@ -19,4 +18,12 @@
         <p class="card-subtitle mb-2 text-muted"><%= next_appointment.doctor.first_name + " " + next_appointment.doctor.last_name %></p>
       </div>
     </div>
+</div>
+
+
+<div class="button-container">
+  <%= link_to "Reports", reports_path, class: "btn btn-primary" %>
+  <%= link_to "Appointments", appointments_path, class: "btn btn-primary" %>
+  
+
 </div>
