@@ -9,6 +9,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    Ascii85 (1.0.3)
     actioncable (7.1.3)
       actionpack (= 7.1.3)
       activesupport (= 7.1.3)
@@ -85,6 +86,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    afm (0.2.2)
     autoprefixer-rails (10.4.16.0)
       execjs (~> 2)
     aws_cf_signer (0.1.3)
@@ -133,14 +135,22 @@ GEM
       ruby2_keywords
     error_highlight (0.6.0)
     erubi (1.12.0)
+    event_stream_parser (1.0.0)
     execjs (2.9.1)
     faker (3.2.3)
       i18n (>= 1.8.11, < 2)
+    faraday (2.9.0)
+      faraday-net_http (>= 2.0, < 3.2)
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
+    faraday-net_http (3.1.0)
+      net-http
     ffi (1.16.3)
     font-awesome-sass (6.5.1)
       sassc (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hashery (2.1.2)
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
@@ -173,7 +183,10 @@ GEM
     mini_mime (1.1.5)
     minitest (5.21.2)
     msgpack (1.7.2)
+    multipart-post (2.4.0)
     mutex_m (0.2.0)
+    net-http (0.4.1)
+      uri
     net-imap (0.4.10)
       date
       net-protocol
@@ -198,6 +211,12 @@ GEM
     nokogiri (1.16.2-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pdf-reader (1.4.0)
+      Ascii85 (~> 1.0.0)
+      afm (~> 0.2.1)
+      hashery (~> 2.0)
+      ruby-rc4
+      ttfunk
     pg (1.5.4)
     pg_search (2.3.6)
       activerecord (>= 5.2)
@@ -266,6 +285,11 @@ GEM
       rqrcode_core (~> 1.0)
     rqrcode_core (1.2.0)
     rtesseract (3.1.3)
+    ruby-openai (6.3.1)
+      event_stream_parser (>= 0.3.0, < 2.0.0)
+      faraday (>= 1)
+      faraday-multipart (>= 1)
+    ruby-rc4 (0.1.5)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     sassc (2.4.0)
@@ -294,12 +318,14 @@ GEM
     thor (1.3.0)
     tilt (2.3.0)
     timeout (0.4.1)
+    ttfunk (1.7.0)
     turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    uri (0.13.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
@@ -338,12 +364,14 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   importmap-rails
   jbuilder
+  pdf-reader (~> 1.4)
   pg (~> 1.1)
   pg_search
   puma (>= 5.0)
   rails (~> 7.1.3)
   rqrcode
   rtesseract
+  ruby-openai
   sassc-rails
   selenium-webdriver
   simple_form!

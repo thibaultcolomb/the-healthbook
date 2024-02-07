@@ -27,6 +27,8 @@ class ReportsController < ApplicationController
 
     if params[:report][:photo].present?
       @report.content = convert_image_to_content
+    elsif params[:report][:pdf].present?
+      @report.content = convert_pdf_to_text
     end
 
     @report.save
@@ -94,6 +96,26 @@ class ReportsController < ApplicationController
       # RTesseract.new(tempfile.path).to_s
       uploaded_file = params[:report][:photo]
       result = RTesseract.new(uploaded_file.path).to_s
+
+      # formatted_result = result.gsub(/\. /, ".\n")
+      # Example: Adding HTML formatting
+      # formatted_result = "<p>#{ocr_result}</p>"
+      # Example: Extracting specific information using regular expressions
+      # dates = result.scan(/\b\d{2}\/\d{2}\/\d{4}\b/)
     end
   end
+
+  def convert_pdf_to_text
+    pdf_io = params[:report][:pdf].tempfile
+    result = PDF::Reader.new(pdf_io).pages.first.text
+  end
+
+  # def format_content(to_be_formatted)
+  #     client = OpenAI::Client.new
+  #     chaptgpt_response = client.chat(parameters: {
+  #       model: "gpt-3.5-turbo",
+  #       messages: [{ role: "user", content: "Format the report content: #{to_be_formatted}. Give me only the text of report, without any of your own answer like 'Here is the formatted content'."}]
+  #     })
+  #     chaptgpt_response["choices"][0]["message"]["content"]
+  # end
 end

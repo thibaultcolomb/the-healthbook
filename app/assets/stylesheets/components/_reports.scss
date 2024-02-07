@@ -12,7 +12,17 @@
   display: flex;
   align-items: center;
   margin-bottom: 8px;
+  position:relative;
+  border-radius: 4px;
 }
+
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  }
 
 .report-date {
   background-color: #64CCC5;
@@ -32,6 +42,7 @@
 }
 
 .report-details {
+  justify-items: start;
   padding: 16px;
   width: 85%;
   font-size: 12px;
