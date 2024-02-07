@@ -24,9 +24,8 @@
   </div>
 
 
-  <%# card for the report %>
-
-  <li class="one-report-card">
+  <%# start card for the report %>
+  <div class="one-report-card">
     <div class="one-report-date">
       <div >
         <div class="">
@@ -38,23 +37,16 @@
       </div>
     </div>
     <div class="one-report-details">
-      <div class="one-report-head">
-        <div class="one-report-title">
-
-
-        </div>
-      </div>
-    <%=@report.doctor.first_name + " " + @report.doctor.last_name + " | " + @report.doctor.specialty %>
-      <div class="one-report-content">
-       <%= @report.content %>
+    <h4><%=@report.doctor.first_name + " " + @report.doctor.last_name + " | " + @report.doctor.specialty %></h4>
       </div>
       </div>
     </div>
-  </li>
-
-
+  </div>
   <%# end of card for the report %>
 
-
-
+  <%# start reports content %>
+<div class="one-report-content">
+ <%= @report.content %>
+</div>
+ <%# end reports content %>
 </div>
