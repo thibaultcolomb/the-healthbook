@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-
+  require 'rqrcode'
   def index
 
     if params[:query].present?
@@ -56,6 +56,7 @@ class ReportsController < ApplicationController
 
   def share
     @report = Report.find(params[:id])
+    @doctors = Doctor.all
     @link_for_qr_code = "www.thehealthbook.online/reports/#{@report.id}"
     @qr_code = RQRCode::QRCode.new(@link_for_qr_code)
     @svg = @qr_code.as_svg(
@@ -66,12 +67,18 @@ class ReportsController < ApplicationController
       standalone: true,
       module_size: 4
     )
+
   end
+
+
+
 
 
   private
 
   require 'net/http'
+
+
 
   def report_params
     params.require(:report).permit(:title, :category, :content, :report_date, :photo, :qr_code)
