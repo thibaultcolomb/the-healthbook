@@ -29,9 +29,9 @@ class ReportsController < ApplicationController
 
 
     if params[:report][:photo].present?
-      @report.content = convert_image_to_content
+      @report.note = convert_image_to_content
     elsif params[:report][:pdf].present?
-      @report.content = convert_pdf_to_text
+      @report.note = convert_pdf_to_text
     end
 
     @report.save
@@ -85,7 +85,7 @@ class ReportsController < ApplicationController
 
 
   def report_params
-    params.require(:report).permit(:title, :category, :content, :report_date, :photo, :qr_code, :doctor_id, :doctor_first_name, :doctor_last_name)
+    params.require(:report).permit(:title, :category, :note, :report_date, :photo, :qr_code, :doctor_id, :doctor_first_name, :doctor_last_name)
   end
 
   def convert_image_to_content
