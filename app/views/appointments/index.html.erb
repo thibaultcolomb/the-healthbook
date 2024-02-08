@@ -1,6 +1,5 @@
 
 <div class="main">
-
   <div class="d-flex align-items-center mt-5">
     <%= link_to root_path do %>
       <i class="fa-solid fa-arrow-left ms-3"></i>
@@ -32,6 +31,13 @@
         <%# .strftime("%A, %d %b %Y %l:%M %p) %>
 
         <p class="card-subtitle mb-2 text-muted">Dr. <%= appointment.doctor.first_name + " " + appointment.doctor.last_name %></p>
+       <p class="card-subtitle mb-2 text-muted"><% @appointments.each do |appointment| %>
+        <% appointment.reports.each do |report| %>
+          <%= report.title %>
+        <% end %>
+       <% end %>
+        </p>
+
 
         <%= link_to edit_appointment_path(appointment), class: "btn btn-secondary mt-1 me-1" do %>
         <i class="fa-regular fa-pen-to-square"></i>

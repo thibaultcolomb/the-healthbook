@@ -13,6 +13,7 @@ class AppointmentsController < ApplicationController
    @report_ids.each_with_index do |report_id, index|
     next if index == 0
     @appointment.reports << Report.find(report_id)
+    # @appointment_attachements.reports << Report.find(report_id)
    end
 
    @appointment.save
