@@ -10,7 +10,7 @@
                 %>
     <%= f.association :doctor, label: "Doctor", collection: Doctor.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name}", doctor.id] }, include_blank: "Select Doctor", input_html: {class: "bg-white"} %>
     <%= f.input :category, collection: ['Blood Tests', 'Imaging', 'Surgery', 'Pathology', 'Cardiology', 'Endoscopy', 'Pulmonary Function Test (PFT)', 'Genetic Testing', 'Allergy Testing', 'Neurological', 'Dermatology', 'Obstetric and Gynecological', 'Urology', 'Orthopedic', 'Gastroenterology', 'Ophthalmology', 'Nuclear Medicine', 'Psychiatric', 'Rehabilitation', 'Dental'], input_html: {class: "bg-white"}%>
-    <%= f.input :content, input_html: {class: "bg-white"} %>
+    <%= f.input :note, input_html: {class: "bg-white"} %>
     <%= f.input :photo, as: :file, input_html: {class: "bg-white"} %>
     <%= f.input :pdf, as: :file, input_html: {class: "bg-white"} %>
     <%= f.submit class: "btn btn-primary" %>
