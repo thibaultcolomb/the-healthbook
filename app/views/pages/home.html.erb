@@ -1,37 +1,37 @@
 
-
-
-
-<%# display the current users appointments %>
-<% if user_signed_in? %>
-  <% next_appointment = current_user.appointments.where('appointment_date > ?', Time.now).order(appointment_date: :asc).first %>
-  <% if next_appointment.present? %>
-    <h3>Your next appointment</h3>
-  <div class="appointment card" style="display: flex; justify-content: center;">
-      <div class="card-body">
-      <div class="date d-flex flex-column align-items-center">
-        <h3 class="card-title" style="border-bottom: 1px solid black;"><%= next_appointment.appointment_date.strftime("%B") %></h3>
-        <div style="flex-grow: 1;">
-          <h3 class="card-title"><%= next_appointment.appointment_date.day %></h3>
-        </div>
-
-      </div>
-        <div style="width: 150px;">
-          <%= "#{next_appointment.appointment_date.strftime("%I:%M %p")}" %>
-          <%# .strftime("%A, %d %b %Y %l:%M %p) %>
-
-          <p class="card-subtitle mb-2 text-muted">Dr. <%= next_appointment.doctor.first_name + " " + next_appointment.doctor.last_name %></p>
-        </div>
-      </div>
-    </div>
-  <% else %>
-    <h3>You have no upcoming appointments</h3>
-  <% end %>
-<% end %>
-
+<div class="home-container">
 <div class="button-container">
   <%= link_to "Reports", reports_path, class: "btn btn-primary" %>
   <%= link_to "Appointments", appointments_path, class: "btn btn-primary" %>
 
 
+</div>
+<div class="bottom-item">
+<%# display the current users appointments %>
+  <% if user_signed_in? %>
+    <% next_appointment = current_user.appointments.where('appointment_date > ?', Time.now).order(appointment_date: :asc).first %>
+    <% if next_appointment.present? %>
+      <h3>Your next appointment</h3>
+    <div class="appointment card" style="display: flex; justify-content: center;">
+        <div class="card-body">
+        <div class="date d-flex flex-column align-items-center">
+          <h3 class="card-title" style="border-bottom: 1px solid black;"><%= next_appointment.appointment_date.strftime("%B") %></h3>
+          <div style="flex-grow: 1;">
+            <h3 class="card-title"><%= next_appointment.appointment_date.day %></h3>
+          </div>
+
+        </div>
+          <div style="width: 150px;">
+            <%= "#{next_appointment.appointment_date.strftime("%I:%M %p")}" %>
+            <%# .strftime("%A, %d %b %Y %l:%M %p) %>
+
+            <p class="card-subtitle mb-2 text-muted">Dr. <%= next_appointment.doctor.first_name + " " + next_appointment.doctor.last_name %></p>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <h3>You have no upcoming appointments</h3>
+    <% end %>
+  <% end %>
+</div>
 </div>
