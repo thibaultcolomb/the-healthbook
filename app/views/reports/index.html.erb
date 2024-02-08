@@ -22,11 +22,20 @@
 
 
   <ul class="inline-list">
-    <%= link_to "All", reports_path, class:"category-tag rounded-pill text-decoration-none", style: "color: #176B87; font-size: 12px;" %>
+    <%= link_to reports_path, class:"text-decoration-none" do %>
+      <div class="all-button bg-primary", style= "color: #176B87;">
+        <%# <i class="fa-solid fa-file"></i> %>
+        <p style="">All</p>
+      </div>
+    <% end %>
     <% @categories.each do |category|%>
-    <li class="category-tag rounded-pill">
-      <%= link_to category, reports_path(category: category), class: "text-decoration-none", style: "color: #176B87; font-size: 12px;" %>
-    </li>
+      <li>
+        <%= link_to reports_path(category: category), class: "text-decoration-none" do %>
+        <div  class="all-button">
+          <%= render "icon_cat", category: category%>
+        </div>
+        <% end %>
+      </li>
     <% end %>
   </ul>
 
