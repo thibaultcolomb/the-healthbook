@@ -8,6 +8,15 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointment_params)
 
+   @report_ids = params[:appointment][:report_ids]
+
+   @report_ids.each_with_index do |report_id, index|
+    next if index == 0
+    @appointment.reports << Report.find(report_id)
+   end
+
+   @appointment.save
+
     if @appointment.save
       redirect_to appointments_path
     else
@@ -43,7 +52,7 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:appointment_date, :time, :content, :doctor_id)
+    params.require(:appointment).permit(:appointment_date, :time, :content, :doctor_id, report_ids: [])
   end
 
   def set_appointment
