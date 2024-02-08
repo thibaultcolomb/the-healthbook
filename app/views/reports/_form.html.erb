@@ -3,10 +3,13 @@
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
     <%= f.input :title %>
-    <%= f.input :report_date %>
+      <%= f.input :report_date,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } },
+            class: "bg-light" %>
     <%= f.association :doctor, label: "Doctor", collection: Doctor.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name}", doctor.id] }, include_blank: "Select Doctor" %>
     <%= f.input :category, collection: ['Blood Tests', 'Imaging', 'Surgery', 'Pathology', 'Cardiology', 'Endoscopy', 'Pulmonary Function Test (PFT)', 'Genetic Testing', 'Allergy Testing', 'Neurological', 'Dermatology', 'Obstetric and Gynecological', 'Urology', 'Orthopedic', 'Gastroenterology', 'Ophthalmology', 'Nuclear Medicine', 'Psychiatric', 'Rehabilitation', 'Dental']%>
-    <%= f.input :content %>
+    <%= f.input :note %>
     <%= f.input :photo, as: :file %>
     <%= f.input :pdf, as: :file %>
     <%= f.submit  %>
