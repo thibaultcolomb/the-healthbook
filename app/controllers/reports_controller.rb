@@ -39,7 +39,6 @@ class ReportsController < ApplicationController
     @report.user = current_user
     @report.doctor = Doctor.find(params[:report] [:doctor_id])
 
-
     if params[:report][:photo].present?
       @report.note = convert_image_to_content
     elsif params[:report][:pdf].present?
