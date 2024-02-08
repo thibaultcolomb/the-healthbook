@@ -39,12 +39,12 @@
         </p>
 
 
-        <%= link_to edit_appointment_path(appointment), class: "btn btn-secondary mt-1 me-1" do %>
-        <i class="fa-regular fa-pen-to-square"></i>
+        <%= link_to edit_appointment_path(appointment) do %>
+        <i class="fa-solid fa-pen-to-square"></i>
         <% end %>
 
-        <%= link_to appointment_path(appointment), data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"}, class: "btn btn-secondary mt-1" do %>
-        <i class="fa-regular fa-trash-can"></i>
+        <%= link_to appointment_path(appointment), data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"} do %>
+        <i class="fa-regular fa-trash-can ms-1"></i>
         <% end %>
       </div>
     </div>
