@@ -2,12 +2,15 @@
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-    <%= f.input :title %>
-    <%= f.input :report_date %>
-    <%= f.association :doctor, label: "Doctor", collection: Doctor.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name}", doctor.id] }, include_blank: "Select Doctor" %>
-    <%= f.input :category, collection: ['Blood Tests', 'Imaging', 'Surgery', 'Pathology', 'Cardiology', 'Endoscopy', 'Pulmonary Function Test (PFT)', 'Genetic Testing', 'Allergy Testing', 'Neurological', 'Dermatology', 'Obstetric and Gynecological', 'Urology', 'Orthopedic', 'Gastroenterology', 'Ophthalmology', 'Nuclear Medicine', 'Psychiatric', 'Rehabilitation', 'Dental']%>
-    <%= f.input :content %>
-    <%= f.input :photo, as: :file %>
-    <%= f.input :pdf, as: :file %>
-    <%= f.submit  %>
+    <%= f.input :title, input_html: {class: "bg-white"}%>
+    <%= f.input :report_date,
+                as: :string,
+                input_html: { data: { controller: "datepicker" }, class: "bg-white"}
+                %>
+    <%= f.association :doctor, label: "Doctor", collection: Doctor.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name}", doctor.id] }, include_blank: "Select Doctor", input_html: {class: "bg-white"} %>
+    <%= f.input :category, collection: ['Blood Tests', 'Imaging', 'Surgery', 'Pathology', 'Cardiology', 'Endoscopy', 'Pulmonary Function Test (PFT)', 'Genetic Testing', 'Allergy Testing', 'Neurological', 'Dermatology', 'Obstetric and Gynecological', 'Urology', 'Orthopedic', 'Gastroenterology', 'Ophthalmology', 'Nuclear Medicine', 'Psychiatric', 'Rehabilitation', 'Dental'], input_html: {class: "bg-white"}%>
+    <%= f.input :content, input_html: {class: "bg-white"} %>
+    <%= f.input :photo, as: :file, input_html: {class: "bg-white"} %>
+    <%= f.input :pdf, as: :file, input_html: {class: "bg-white"} %>
+    <%= f.submit class: "btn btn-primary" %>
     <% end %>
