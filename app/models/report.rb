@@ -5,7 +5,7 @@ class Report < ApplicationRecord
   has_many :appointment_attachements
   has_many :appointments, through: :appointment_attachements
 
-  validates :title, :content, :report_date, :category, presence: true
+  validates :title, :report_date, :category, presence: true
 
   validates :category, inclusion: { in: ['Blood Tests', 'Imaging', 'Surgery', 'Pathology', 'Cardiology', 'Endoscopy', 'Pulmonary Function Test (PFT)', 'Genetic Testing', 'Allergy Testing', 'Neurological', 'Dermatology', 'Obstetric and Gynecological', 'Urology', 'Orthopedic', 'Gastroenterology', 'Ophthalmology', 'Nuclear Medicine', 'Psychiatric', 'Rehabilitation', 'Dental'] }
 
