@@ -14,19 +14,32 @@
       <%= text_field_tag :query,
             params[:query],
             class: "form-control bg-info p-0 ps-1",
-            placeholder: "Type a keyword"
+            placeholder: "Search for a report"
         %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary m-0 p-0 ms-1" %>
+      <%= text_field_tag :report_date,
+          params[:report_date],
+          data: { controller: "datepicker" }, placeholder: "Date..", class: "form-control bg-info p-0 ps-1 ms-1" %>
+
+      <%= submit_tag "Search", name: "", class: "btn bg-primary m-0 p-0 ms-1 p-1", style: "color: #176B87;" %>
     <% end %>
   </div>
 
 
   <ul class="inline-list">
-    <%= link_to "All", reports_path, class:"category-tag rounded-pill text-decoration-none", style: "color: #176B87; font-size: 12px;" %>
+    <%= link_to reports_path, class:"text-decoration-none" do %>
+      <div class="all-button bg-primary", style= "color: #176B87;">
+        <%# <i class="fa-solid fa-file"></i> %>
+        <p style="">All</p>
+      </div>
+    <% end %>
     <% @categories.each do |category|%>
-    <li class="category-tag rounded-pill">
-      <%= link_to category, reports_path(category: category), class: "text-decoration-none", style: "color: #176B87; font-size: 12px;" %>
-    </li>
+      <li>
+        <%= link_to reports_path(category: category), class: "text-decoration-none" do %>
+        <div  class="all-button">
+          <%= render "icon_cat", category: category%>
+        </div>
+        <% end %>
+      </li>
     <% end %>
   </ul>
 

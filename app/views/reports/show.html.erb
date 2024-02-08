@@ -13,10 +13,52 @@
   <div class="one-report-edit">
       <%= link_to edit_report_path(@report) do %>
       <i class="fa-solid fa-pen-to-square"></i>
+
     <% end %>
-      <%= link_to share_path do %>
+      <%= link_to "", "data-bs-toggle": "modal", "data-bs-target": "#exampleModal" do %>
       <i class="fa-solid fa-share"></i>
     <% end %>
+    <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+<details>
+  <summary><h2>Share <%= @report.title %></h2>
+<h3>by QR Code</h3></summary>
+<div class="qr_code">
+  <%= @svg.html_safe %>
+</div>
+</details>
+
+
+<details>
+  <summary><h2>Share <%= @report.title %></h2>
+  <h3>by E-mail</h3></summary>
+  <div class="email" style="text-align: center;">
+  <%= form_with url: report_path(@report), method: :post, html: { style: "display: flex; justify-content: center; align-items: center;" } do |f| %>
+    <%= f.label :doctor_email, "Select Doctor:" %>
+    <%= f.select :doctor_email, Doctor.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name} (#{doctor.email})", doctor.email] }, { include_blank: "Select Doctor" }, { style: 'width: 50%' } %>
+    <%= f.submit "Share by email", class: "btn btn-primary", style: "ml-10;" %>
+  <% end %>
+</details>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
       <%= link_to report_path(@report), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
       <i class="fa-regular fa-trash-can"></i>
       <% end %>
@@ -56,10 +98,4 @@
 <div class="one-report-documents">
 <h3>original documents</h3>
 <%#= @report.uploaded_file %>
-</div>
-
-<div>
-   <%= link_to reports_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
-     <i class="fa-regular fa-trash-can"></i>
-   <% end %>
 </div>

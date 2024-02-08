@@ -5,6 +5,9 @@ class ReportsController < ApplicationController
       @reports = current_user.reports.search_by_title(params[:query])
     elsif params[:category].present?
       @reports = current_user.reports.where(category: params[:category])
+    elsif params[:report_date].present?
+      @reports = current_user.reports.where(report_date: params[:report_date])
+ 
     else
       @reports = current_user.reports.all
     end
@@ -17,6 +20,16 @@ class ReportsController < ApplicationController
     @report.viewed_at = Time.now
     @report.save
 
+    @link_for_qr_code = "www.thehealthbook.online/reports/#{@report.id}"
+    @qr_code = RQRCode::QRCode.new(@link_for_qr_code)
+    @svg = @qr_code.as_svg(
+      offset: 0,
+      fill: 'white',
+      color: '64CCC5',
+      shape_rendering: 'crispEdges',
+      standalone: true,
+      module_size: 4
+    )
   end
 
   def new
