@@ -1,12 +1,13 @@
 .one-report-card {
   overflow: hidden;
-  height: 70px;
-  background: #D9D9D9;
+  height: 100px;
+  background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
   margin: 0 auto;
   width: 370px;
+  border-radius: 8px
 
 }
 
@@ -48,18 +49,20 @@
 }
 
 .one-report-content {
-  background: #D9D9D9;
+  background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   color: #176B87;
   overflow: hidden;
   padding: 16px;
   margin: 0 auto;
   width: 370px;
+  border-radius: 8px
 }
 
 .one-report-edit {
   padding: 16px;
   width: 370px;
+  text-align: right;
 }
 
 .one-report-documents {

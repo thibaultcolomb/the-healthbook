@@ -8,7 +8,7 @@ class ReportsController < ApplicationController
       @reports = current_user.reports.where(category: params[:category])
     elsif params[:report_date].present?
       @reports = current_user.reports.where(report_date: params[:report_date])
- 
+
     else
       @reports = current_user.reports.all
     end
@@ -32,13 +32,16 @@ class ReportsController < ApplicationController
 
   def new
     @report = Report.new
+
   end
 
   def create
     @report = Report.new(report_params)
     @report.user = current_user
-    @report.doctor = Doctor.find(params[:report] [:doctor_id])
 
+    if params[:report][:doctor_id].present?
+      @report.doctor = Doctor.find(params[:report][:doctor_id])
+    end
 
     if params[:report][:photo].present?
       @report.note = convert_image_to_content
@@ -46,13 +49,13 @@ class ReportsController < ApplicationController
       @report.note = convert_pdf_to_text
     end
 
-    @report.save
     if @report.save
       redirect_to reports_path
     else
       render :new, status: :unprocessable_entity
     end
   end
+
 
   def edit
     @report = current_user.reports.find(params[:id])
