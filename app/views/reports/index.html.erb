@@ -14,9 +14,13 @@
       <%= text_field_tag :query,
             params[:query],
             class: "form-control bg-info p-0 ps-1",
-            placeholder: "Type a keyword"
+            placeholder: "Search for a report"
         %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary m-0 p-0 ms-1" %>
+      <%= text_field_tag :report_date,
+          params[:report_date],
+          data: { controller: "datepicker" }, placeholder: "Date..", class: "form-control bg-info p-0 ps-1 ms-1" %>
+
+      <%= submit_tag "Search", name: "", class: "btn bg-primary m-0 p-0 ms-1 p-1", style: "color: #176B87;" %>
     <% end %>
   </div>
 

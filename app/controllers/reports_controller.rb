@@ -6,6 +6,8 @@ class ReportsController < ApplicationController
       @reports = Report.search_by_title(params[:query])
     elsif params[:category].present?
       @reports = Report.where(category: params[:category])
+    elsif params[:report_date].present?
+      @reports = Report.where(report_date: params[:report_date])
     else
       @reports = Report.all
     end
