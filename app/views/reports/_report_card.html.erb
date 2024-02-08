@@ -1,14 +1,46 @@
  <li class="report-card">
-    <div class="report-date">
+    <%# <div class="report-date">
       <div >
         <div class="">
           <%= report.report_date.day %>
-        </div>
-        <div class="">
-          <%= (Date::MONTHNAMES[report.report_date.month]).first(3) %>
-        </div>
-      </div>
+        <%# </div> %>
+        <%# <div class=""> %>
+          <%# <%= (Date::MONTHNAMES[report.report_date.month]).first(3) %>
+        <%# </div> %>
+      <%# </div> %>
+    <%# </div> %>
+
+
+    <div class="report-icon">
+      <% if report.category == "Blood Tests" %>
+        <i class="fa-solid fa-droplet"></i>
+      <% elsif (report.category == "Imaging" || report.category == "Surgery") %>
+        <i class="fa-solid fa-hospital"></i>
+      <% elsif report.category == 'Cardiology' %>
+        <i class="fa-solid fa-heart-pulse"></i>
+      <% elsif report.category == 'Pulmonary Function Test (PFT)' %>
+        <i class="fa-solid fa-lungs"></i>
+      <% elsif report.category == 'Genetic Testing' %>
+        <i class="fa-solid fa-dna"></i>
+      <% elsif report.category == 'Neurological' %>
+        <i class="fa-solid fa-brain"></i>
+      <% elsif (report.category == 'Obstetric and Gynecological' || report.category == "Urology" || report.category == "Dermatology" || report.category == "Gastroenterology" || report.category == 'Endoscopy') %>
+        <i class="fa-solid fa-stethoscope"></i>
+      <% elsif report.category == 'Orthopedic' %>
+        <i class="fa-solid fa-bone"></i>
+      <% elsif report.category == 'Ophthalmology' %>
+        <i class="fa-solid fa-eye"></i>
+      <% elsif report.category == 'Dental' %>
+        <i class="fa-solid fa-tooth"></i>
+      <% elsif (report.category == 'Allergy Testing' || report.category == 'Nuclear Medicine') %>
+        <i class="fa-solid fa-vial-virus"></i>
+      <% elsif report.category == 'Pathology' %>
+        <i class="fa-solid fa-virus"></i>
+      <% elsif %>
+        <i class="fa-solid fa-user-doctor"></i>
+      <% end %>
     </div>
+
     <div class="report-details">
       <div class="report-head">
         <div class="report-title">
