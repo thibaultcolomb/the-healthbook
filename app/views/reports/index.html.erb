@@ -43,12 +43,26 @@
     <% end %>
   </ul>
 
-  <div class="d-flex justify-content-end">
+  <%# <div class="d-flex justify-content-end">
     <%= link_to new_report_path do %>
-      <i class="fa-solid fa-plus fa-2x"></i>
-    <% end %>
-  </div>
+      <%# <i class="fa-solid fa-plus fa-2x"></i> %>
+    <%# <% end %>
+  <%# </div> %>
 
+  <div class="d-flex justify-content-end">
+    <div class="dropdown">
+      <!-- Button trigger dropdown -->
+      <i class="fa-solid fa-plus fa-2x text-primary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
+      <!-- Dropdown menu -->
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><%= link_to "Upload image", new_report_path, class: "dropdown-item" %></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><%= link_to "Upload pdf", new_report_path, class: "dropdown-item" %></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><%= link_to "Fill manually", new_report_path, class: "dropdown-item" %></li>
+      </ul>
+    </div>
+  </div>
 
   <ul class="reports">
     <% @reports.each do |report|%>
