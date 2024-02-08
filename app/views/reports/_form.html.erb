@@ -2,6 +2,7 @@
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
+
     <%= f.input :title, input_html: {class: "bg-white"}%>
     <%= f.input :report_date,
                 as: :string,
@@ -13,4 +14,6 @@
     <%= f.input :photo, as: :file, input_html: {class: "bg-white"} %>
     <%= f.input :pdf, as: :file, input_html: {class: "bg-white"} %>
     <%= f.submit class: "btn btn-primary" %>
+
+
     <% end %>

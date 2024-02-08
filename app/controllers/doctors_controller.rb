@@ -1,6 +1,6 @@
 class DoctorsController < ApplicationController
   def index
-    @doctors = Doctor.all
+    @doctors = current_user.doctors.all
   end
 
   def new
@@ -20,11 +20,11 @@ class DoctorsController < ApplicationController
   end
 
   def edit
-    @doctor = Doctor.find(params[:id])
+    @doctor = current_user.doctors.find(params[:id])
   end
 
   def update
-    @doctor = Doctor.find(params[:id])
+    @doctor = current_user.doctors.find(params[:id])
     if @doctor.update(doctor_params)
       redirect_to doctors_path
     else
@@ -33,7 +33,7 @@ class DoctorsController < ApplicationController
   end
 
   def destroy
-    @doctor = Doctor.find(params[:id])
+    @doctor = current_user.doctors.find(params[:id])
     @doctor.destroy
     redirect_to doctors_path, status: :see_other
   end
