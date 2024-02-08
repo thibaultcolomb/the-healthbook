@@ -5,18 +5,19 @@
       <i class="fa-solid fa-arrow-left ms-3"></i>
     <% end %>
 
+
     <div class="mx-auto text-center">
       <h2><%= @report.title %></h2>
     </div>
   </div>
 
-  <div class="one-report-edit">
+  <div class="d-flex justify-content-end">
       <%= link_to edit_report_path(@report) do %>
-      <i class="fa-solid fa-pen-to-square"></i>
+      <i class="fa-solid fa-pen-to-square me-3"></i>
 
     <% end %>
       <%= link_to "", "data-bs-toggle": "modal", "data-bs-target": "#exampleModal" do %>
-      <i class="fa-solid fa-share"></i>
+      <i class="fa-solid fa-share me-3"></i>
     <% end %>
     <!-- Button trigger modal -->
 
@@ -47,7 +48,7 @@
   <%= form_with url: report_path(@report), method: :post, html: { style: "display: flex; justify-content: center; align-items: center;" } do |f| %>
     <%= f.label :doctor_email, "Select Doctor:" %>
     <%= f.select :doctor_email, Doctor.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name} (#{doctor.email})", doctor.email] }, { include_blank: "Select Doctor" }, { style: 'width: 50%' } %>
-    <%= f.submit "Share by email", class: "btn btn-primary", style: "ml-10;" %>
+    <%= f.submit "Share by email", class: "btn bg-primary m-0 p-0 ms-1 p-1" %>
   <% end %>
 </details>
 
@@ -66,21 +67,22 @@
 
 
   <%# start card for the report %>
-  <div class="one-report-card">
-    <div class="one-report-date">
-      <div >
-        <div class="">
-          <%= @report.report_date.day %>
-        </div>
-        <div class="">
+  <div class="one-report-card ">
+
+    <div class="one-report-details p-20">
+     <% if @report.doctor.present? %>
+  <h4><%=@report.doctor.first_name + " " + @report.doctor.last_name + " | " + @report.doctor.specialty %></h4>
+  <div class="d-flex">
+     <%= @report.report_date.day %>
           <%= (Date::MONTHNAMES[@report.report_date.month]).first(3) %>
         </div>
-      </div>
-    </div>
-    <div class="one-report-details">
-      <% if @report.doctor.present? %>
-        <h4><%=@report.doctor.first_name + " " + @report.doctor.last_name + " | " + @report.doctor.specialty %></h4>
-      <% end %>
+<% else %>
+  <h4>No doctor selected</h4>
+  <div class="d-flex">
+     <%= @report.report_date.day %>
+          <%= (Date::MONTHNAMES[@report.report_date.month]).first(3) %>
+        </div>
+<% end %>
       </div>
       </div>
     </div>
@@ -92,7 +94,7 @@
  <%= @report.note %>
 </div>
  <%# end reports content %>
-</div>
+
 
 
 <div class="one-report-documents">
