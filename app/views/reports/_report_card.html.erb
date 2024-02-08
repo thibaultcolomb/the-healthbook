@@ -1,14 +1,18 @@
  <li class="report-card">
-    <div class="report-date">
+    <%# <div class="report-date">
       <div >
         <div class="">
           <%= report.report_date.day %>
-        </div>
-        <div class="">
-          <%= (Date::MONTHNAMES[report.report_date.month]).first(3) %>
-        </div>
-      </div>
-    </div>
+        <%# </div> %>
+        <%# <div class=""> %>
+          <%# <%= (Date::MONTHNAMES[report.report_date.month]).first(3) %>
+        <%# </div> %>
+      <%# </div> %>
+    <%# </div> %>
+
+
+    <%= render "icon", report: report %>
+
     <div class="report-details">
       <div class="report-head">
         <div class="report-title">
