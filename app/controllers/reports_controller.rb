@@ -17,7 +17,6 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
-
   end
 
   def new
@@ -28,7 +27,6 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
     @report.user = current_user
     @report.doctor = Doctor.find(params[:report] [:doctor_id])
-
 
     if params[:report][:photo].present?
       @report.content = convert_image_to_content
