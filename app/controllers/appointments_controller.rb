@@ -16,12 +16,12 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
-    @appointment = Appointment.find(params[:id])
+    @appointment = current_user.appointments.find(params[:id])
     @doctors = Doctor.all
   end
 
   def update
-    @appointment = Appointment.find(params[:id])
+    @appointment = current_user.appointments.find(params[:id])
     if @appointment.update(appointment_params)
       redirect_to appointments_path
     else
@@ -30,11 +30,11 @@ class AppointmentsController < ApplicationController
   end
 
   def index
-    @appointments = Appointment.all
+    @appointments = current_user.appointments
   end
 
   def destroy
-    @appointment = Appointment.find(params[:id])
+    @appointment = current_user.appointments.find(params[:id])
     @appointment.destroy
     redirect_to appointments_path, status: :see_other
   end
@@ -47,7 +47,7 @@ class AppointmentsController < ApplicationController
   end
 
   def set_appointment
-    @appointment = Appointment.find(params[:id])
+    @appointment = current_user.appointments.find(params[:id])
   end
 
 end
