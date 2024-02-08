@@ -1,7 +1,6 @@
 class ReportsController < ApplicationController
   require 'rqrcode'
   def index
-
     if params[:query].present?
       @reports = current_user.reports.search_by_title(params[:query])
     elsif params[:category].present?
@@ -15,6 +14,8 @@ class ReportsController < ApplicationController
 
   def show
     @report = current_user.reports.find(params[:id])
+    @report.viewed_at = Time.now
+    @report.save
 
   end
 
@@ -25,6 +26,7 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     @report.user = current_user
+    @report.viewed_at = Time.now
     @report.doctor = Doctor.find(params[:report] [:doctor_id])
 
 
@@ -48,7 +50,8 @@ class ReportsController < ApplicationController
 
   def update
     @report = current_user.reports.find(params[:id])
-    @report = current_user.reports.update(report_params)
+    @report.update(report_params)
+    @report.viewed_at = Time.now
     redirect_to report_path(@report)
   end
 
@@ -85,7 +88,7 @@ class ReportsController < ApplicationController
 
 
   def report_params
-    params.require(:report).permit(:title, :category, :note, :report_date, :photo, :qr_code, :doctor_id, :doctor_first_name, :doctor_last_name)
+    params.require(:report).permit(:title, :category, :note, :report_date, :photo, :qr_code, :doctor_id, :doctor_first_name, :doctor_last_name, )
   end
 
   def convert_image_to_content
