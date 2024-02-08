@@ -32,7 +32,8 @@
 
         <p class="card-subtitle mb-2 text-muted">Dr. <%= appointment.doctor.first_name + " " + appointment.doctor.last_name %></p>
        <p class="card-subtitle mb-2 text-muted"><% @appointments.each do |appointment| %>
-        <% appointment.reports.each do |report| %>
+        <% appointment.reports.each_with_index do |report, index| %>
+          <% next if index == 0 %>
           <%= report.title %>
         <% end %>
        <% end %>
