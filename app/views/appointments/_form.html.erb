@@ -1,21 +1,19 @@
 <div class='main'>
-  <%= simple_form_for [@appointment] do |f| %>
+  <%= simple_form_for [appointment] do |f| %>
   <%= f.input :appointment_date,
               as: :string,
-              input_html: { data: { controller: "datepicker" } },
-              class: "bg-light" %>
+              input_html: { data: { controller: "datepicker" }, class: "bg-white"}
+               %>
 
 <%= f.input :time,
-              as: :time %>
+              as: :time, input_html: { class: "bg-white" }%>
 
   <%= f.input :content,
-              as: :file %>
+              as: :file, input_html: { class: "bg-white" } %>
 
   <%# <%= f.association :doctor, label: "Doctor", collection: Doctor.all, label_method: :name, value_method: :id, include_blank: "Select Doctor" %>
-  <%= f.association :doctor, label: "Doctor", collection: Doctor.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name}", doctor.id] }, include_blank: "Select Doctor" %>
+  <%= f.association :doctor, label: "Doctor", collection: Doctor.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name}", doctor.id] }, include_blank: "Select Doctor", input_html: { class: "bg-white" } %>
 
-  <%= f.button :submit %>
+  <%= f.button :submit , class: "btn btn-primary"%>
   <% end %>
-
-
 </div>

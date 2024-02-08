@@ -11,6 +11,4 @@ class Doctor < ApplicationRecord
                                             "Urology", "Orthopedics", "Physical Medicine and Rehabilitation", "Allergy and Immunology",
                                              "Infectious Diseases", "Endocrinology", "Cardiology"]
                                     }
-
-
 end

@@ -1,6 +1,5 @@
 
 <div class="main">
-
   <div class="d-flex align-items-center mt-5">
     <%= link_to root_path do %>
       <i class="fa-solid fa-arrow-left ms-3"></i>
@@ -21,7 +20,7 @@
   <div class="appointment card" style="display: flex; justify-content: center;">
     <div class="card-body">
     <div class="date d-flex flex-column align-items-center">
-      <h3 class="card-title" style="border-bottom: 1px solid black;"><%= appointment.appointment_date.strftime("%B") %></h3>
+      <p class="card-title" style="border-bottom: 1px solid black;"><%= appointment.appointment_date.strftime("%B") %></p>
       <div style="flex-grow: 1;">
         <h3 class="card-title"><%= appointment.appointment_date.day %></h3>
       </div>
@@ -32,13 +31,21 @@
         <%# .strftime("%A, %d %b %Y %l:%M %p) %>
 
         <p class="card-subtitle mb-2 text-muted">Dr. <%= appointment.doctor.first_name + " " + appointment.doctor.last_name %></p>
+       <p class="card-subtitle mb-2 text-muted"><% @appointments.each do |appointment| %>
+        <% appointment.reports.each_with_index do |report, index| %>
+          <% next if index == 0 %>
+          <%= report.title %>
+        <% end %>
+       <% end %>
+        </p>
 
-        <%= link_to edit_appointment_path(appointment), class: "btn btn-secondary mt-1 me-1" do %>
-        <i class="fa-regular fa-pen-to-square"></i>
+
+        <%= link_to edit_appointment_path(appointment) do %>
+        <i class="fa-solid fa-pen-to-square"></i>
         <% end %>
 
-        <%= link_to appointment_path(appointment), data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"}, class: "btn btn-secondary mt-1" do %>
-        <i class="fa-regular fa-trash-can"></i>
+        <%= link_to appointment_path(appointment), data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"} do %>
+        <i class="fa-regular fa-trash-can ms-1"></i>
         <% end %>
       </div>
     </div>
