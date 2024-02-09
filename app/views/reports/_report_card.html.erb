@@ -16,7 +16,11 @@
     <div class="report-details">
       <div class="report-head">
         <div class="report-title">
-          <%= link_to report.title, report_path(report), class: "text-decoration-none", style: "color: #176B87;" %>
+          <p><%= link_to report.title, report_path(report), class: "text-decoration-none", style: "color: #176B87;" %></p>
+         <div class="report-date">
+         <%= report.report_date.day %>
+          <%= (Date::MONTHNAMES[report.report_date.month]).first(3) %>
+         </div>
         </div>
         <div class="report-category">
           <%= report.category %>
