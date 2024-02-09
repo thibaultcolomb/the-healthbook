@@ -1,14 +1,23 @@
 
 <div class="home-container">
-<div class="button-container">
-  <%= link_to "Reports", reports_path, class: "btn btn-primary" %>
-  <%= link_to "Appointments", appointments_path, class: "btn btn-primary" %>
 
+  <div class="button-container">
+    <%= link_to reports_path, class: "btn btn-primary" do %>
+      <i class="fa-solid fa-book" style="font-size: 20px;"></i> Reports
 
-</div>
+    <% end %>
+    <%= link_to appointments_path, class: "btn btn-primary" do %>
+      <i class="fa-solid fa-calendar" style="font-size: 20px;"></i> Appointments
+    <% end %>
+  </div>
+
 <div class="bottom-item">
 
-  <% if user_signed_in? %>
+<% unless user_signed_in? %>
+  <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+<% end %>
+
+<% if user_signed_in? %>
 
 <%# Report card %>
 
