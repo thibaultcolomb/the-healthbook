@@ -36,7 +36,6 @@
 
     <% @reports.each do |report|%>
       <% report.category %>
-    <%# if @report.user == current_user%>
         <li>
           <%= link_to reports_path(category: report.category ), class: "text-decoration-none" do %>
           <div  class="all-button">
