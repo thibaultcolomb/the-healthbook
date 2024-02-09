@@ -49,7 +49,8 @@ class ReportsController < ApplicationController
     @report.viewed_at = Time.now
 
     if params[:report][:photo].present?
-      @report.note = convert_image_to_content
+      to_be_formatted = convert_image_to_content
+      @report.note = format_content(to_be_formatted)
     elsif params[:report][:pdf].present?
       @report.note = convert_pdf_to_text
     end
@@ -76,7 +77,7 @@ class ReportsController < ApplicationController
   def destroy
     @report = current_user.reports.find(params[:id])
     @report.destroy
-    redirect_to report_path(@report), status: :see_other
+    redirect_to reports_path, status: :see_other
   end
 
   def share
@@ -133,12 +134,12 @@ class ReportsController < ApplicationController
     result = PDF::Reader.new(pdf_io).pages.first.text
   end
 
-  # def format_content(to_be_formatted)
-  #     client = OpenAI::Client.new
-  #     chaptgpt_response = client.chat(parameters: {
-  #       model: "gpt-3.5-turbo",
-  #       messages: [{ role: "user", content: "Format the report content: #{to_be_formatted}. Give me only the text of report, without any of your own answer like 'Here is the formatted content'."}]
-  #     })
-  #     chaptgpt_response["choices"][0]["message"]["content"]
-  # end
+  def format_content(to_be_formatted)
+      client = OpenAI::Client.new
+      chaptgpt_response = client.chat(parameters: {
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "user", content: "Format the report content for it to be displayed in a nice format. Make sure it is HTML formatted as it will be displayed in an html.erb file: #{to_be_formatted}. Give me only your formatted output, without any of your own comments"}]
+      })
+      chaptgpt_response["choices"][0]["message"]["content"]
+  end
 end
