@@ -27,7 +27,7 @@
 
     </div>
       <div style="width: 150px;">
-        <%= "#{appointment.appointment_date.strftime("%I:%M %p")}" %>
+        <%= "#{appointment.time.strftime("%I:%M %p")}" %>
         <%# .strftime("%A, %d %b %Y %l:%M %p) %>
 
         <p class="card-subtitle mb-2 text-muted">Dr. <%= appointment.doctor.first_name + " " + appointment.doctor.last_name %></p>
