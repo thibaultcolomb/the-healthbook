@@ -23,7 +23,7 @@
         </div>
       </div>
      <div class="report-content">
-        <%= report.note %>
+        <%= strip_tags(report.note.sub(/.*?<body[^>]*>/im, '')) %>
       </div>
       <div class="report-edit">
         <%= link_to edit_report_path(report) do%>
