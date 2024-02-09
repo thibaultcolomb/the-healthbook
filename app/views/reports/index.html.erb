@@ -34,16 +34,18 @@
     <% end %>
 
 
-    <% @categories.each do |category|%>
+    <% @reports.each do |report|%>
+      <% report.category %>
     <%# if @report.user == current_user%>
         <li>
-          <%= link_to reports_path(category: category), class: "text-decoration-none" do %>
+          <%= link_to reports_path(category: report.category ), class: "text-decoration-none" do %>
           <div  class="all-button">
-            <%= render "icon_cat", category: category%>
+            <%= render "icon_cat", category: report.category %>
           </div>
           <% end %>
         </li>
       <% end %>
+
   </ul>
 
   <%# <div class="d-flex justify-content-end">
