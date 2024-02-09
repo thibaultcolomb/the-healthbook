@@ -32,15 +32,18 @@
         <p style="">All</p>
       </div>
     <% end %>
+
+
     <% @categories.each do |category|%>
-      <li>
-        <%= link_to reports_path(category: category), class: "text-decoration-none" do %>
-        <div  class="all-button">
-          <%= render "icon_cat", category: category%>
-        </div>
-        <% end %>
-      </li>
-    <% end %>
+    <%# if @report.user == current_user%>
+        <li>
+          <%= link_to reports_path(category: category), class: "text-decoration-none" do %>
+          <div  class="all-button">
+            <%= render "icon_cat", category: category%>
+          </div>
+          <% end %>
+        </li>
+      <% end %>
   </ul>
 
   <%# <div class="d-flex justify-content-end">
@@ -66,7 +69,9 @@
 
   <ul class="reports">
     <% @reports.each do |report|%>
-      <%= render "report_card", report: report %>
+      <% if report.user == current_user%>
+        <%= render "report_card", report: report %>
+      <% end %>
     <% end %>
 
   </ul>
