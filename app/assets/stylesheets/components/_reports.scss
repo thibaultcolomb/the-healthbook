@@ -26,21 +26,13 @@
   z-index: 0;
   }
 
-.report-date {
-  background-color: rgb(0,130,153);
-  height: 100%;
-  width: 15%;
-  object-fit: cover;
-  color: #D9D9D9;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .report-date > div > div{
   display: flex;
   justify-content: center;
+}
+
+.report-date {
+  color: black;
 }
 
 .report-icon {

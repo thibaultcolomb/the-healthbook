@@ -18,7 +18,7 @@
         %>
       <%= text_field_tag :report_date,
           params[:report_date],
-          data: { controller: "datepicker" }, placeholder: "Date..", class: "form-control bg-info p-0 ps-1 ms-1" %>
+          data: { controller: "datepicker" }, placeholder: "Pick a date", class: "form-control bg-info p-0 ps-1 ms-1" %>
 
       <%= submit_tag "Search", name: "", class: "btn bg-primary m-0 p-0 ms-1 p-1", style: "color: #176B87;" %>
     <% end %>
@@ -32,15 +32,20 @@
         <p style="">All</p>
       </div>
     <% end %>
-    <% @categories.each do |category|%>
-      <li>
-        <%= link_to reports_path(category: category), class: "text-decoration-none" do %>
-        <div  class="all-button">
-          <%= render "icon_cat", category: category%>
-        </div>
-        <% end %>
-      </li>
-    <% end %>
+
+
+    <% @reports.each do |report|%>
+      <% report.category %>
+    <%# if @report.user == current_user%>
+        <li>
+          <%= link_to reports_path(category: report.category ), class: "text-decoration-none" do %>
+          <div  class="all-button">
+            <%= render "icon_cat", category: report.category %>
+          </div>
+          <% end %>
+        </li>
+      <% end %>
+
   </ul>
 
   <%# <div class="d-flex justify-content-end">
@@ -52,7 +57,7 @@
   <div class="d-flex justify-content-end">
     <div class="dropdown">
       <!-- Button trigger dropdown -->
-      <i class="fa-solid fa-plus fa-2x text-primary" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
+      <i class="fa-solid fa-plus fa-2x text-primary mb-3" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
       <!-- Dropdown menu -->
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <li><%= link_to "Upload image", new_report_path, class: "dropdown-item" %></li>
@@ -66,7 +71,9 @@
 
   <ul class="reports">
     <% @reports.each do |report|%>
-      <%= render "report_card", report: report %>
+      <% if report.user == current_user%>
+        <%= render "report_card", report: report %>
+      <% end %>
     <% end %>
 
   </ul>
