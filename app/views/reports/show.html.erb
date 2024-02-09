@@ -66,7 +66,7 @@
   <%# start card for the report %>
   <div class="one-report-card ">
 
-    <div class="one-report-details p-20">
+    <div class="one-report-details">
      <% if @report.doctor.present? %>
   <h4><%=@report.doctor.first_name + " " + @report.doctor.last_name + " | " + @report.doctor.specialty %></h4>
   <div class="d-flex">
@@ -81,20 +81,17 @@
         </div>
 <% end %>
       </div>
-      </div>
-    </div>
-  </div>
-  <%# end of card for the report %>
 
-  <%# start reports content %>
-<div class="one-report-content">
+      </div>
+
+    </div>
+    <div class="one-report-content">
  <%= @report.note.html_safe %>
 </div>
- <%# end reports content %>
-
 
 
 <div class="one-report-documents">
 <h3>original documents</h3>
 <%#= @report.uploaded_file %>
 </div>
+  </div>
