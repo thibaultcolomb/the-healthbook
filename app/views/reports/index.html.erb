@@ -2,10 +2,10 @@
 
   <div class="d-flex align-items-center mt-5">
     <%= link_to root_path do %>
-      <i class="fa-solid fa-arrow-left ms-3"></i>
+      <i class="fa-solid fa-arrow-left ms-3" style="color: black; background-color: grey;"></i>
     <% end %>
     <div class="mx-auto text-center">
-      <h2>Medical history</h2>
+      <h2 style="color: rgb(0,122,255);">Medical history</h2>
     </div>
   </div>
 
@@ -56,7 +56,7 @@
   <div class="d-flex justify-content-end">
     <div class="dropdown">
       <!-- Button trigger dropdown -->
-      <i class="fa-solid fa-plus fa-2x text-primary mb-3" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
+      <i class="fa-solid fa-plus fa-2x text-primary mb-3 btn btn-success text-white" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
       <!-- Dropdown menu -->
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <li><%= link_to "Upload image", new_report_path, class: "dropdown-item" %></li>
