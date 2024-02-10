@@ -87,7 +87,8 @@
 
 
 .report-category {
-  color: rgb(0,130,153);
+  color: rgb(88,86,214);
+  font-size: 12px;
 }
 
 .category-tag {
@@ -100,11 +101,12 @@
   max-height: 30%;
   flex-grow: 1;
   overflow: hidden;
+  color: rgb(100,100,100);
 }
 
 
 .all-button {
-  background-color: rgb(211,15,69);// rgb(0,130,153);
+  background-color: rgb(88,86,214);// rgb(0,130,153);
   height: 100%;
   object-fit: cover;
   color: #D9D9D9;
@@ -119,4 +121,35 @@
 .all-button p {
   text-decoration: none;
   margin-bottom: 0;
+}
+
+.alt-button {
+  background-color: rgb(88,86,214);
+  height: 100%;
+  object-fit: cover;
+  color: #D9D9D9;
+  display: inline-block;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+}
+
+.alt-button p {
+  text-decoration: none;
+  margin-bottom: 0;
+}
+
+.slider-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: red;
+}
+
+.slider-content {
+  width: 300%;
+  position: absolute;
+  left: 0;
+  transition: left 0.5s ease;
 }

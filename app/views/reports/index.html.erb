@@ -2,7 +2,7 @@
 
   <div class="d-flex align-items-center mt-5">
     <%= link_to root_path do %>
-      <i class="fa-solid fa-arrow-left ms-3" style="color: black; background-color: grey;"></i>
+      <i class="fa-solid fa-arrow-left ms-3 back-arrow" ></i>
     <% end %>
     <div class="mx-auto text-center">
       <h2 style="color: rgb(0,122,255);">Medical history</h2>
@@ -13,39 +13,61 @@
     <%= form_with url: reports_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
             params[:query],
-            class: "form-control bg-info p-0 ps-1",
-            placeholder: "Search for a report"
+            class: "form-control p-0 ps-1",
+            placeholder: "Find a report"
+
         %>
       <%= text_field_tag :report_date,
           params[:report_date],
-          data: { controller: "datepicker" }, placeholder: "Pick a date", class: "form-control bg-info p-0 ps-1 ms-1" %>
+          data: { controller: "datepicker" }, placeholder: "Pick a date", class: "form-control p-0 ps-1 ms-1" %>
 
-      <%= submit_tag "Search", name: "", class: "btn bg-primary m-0 p-0 ms-1 p-1", style: "color: #176B87;" %>
+      <%= submit_tag "Search", name: "", class: "btn bg-success m-0 p-0 ms-1 p-1", style: "color: white;" %>
     <% end %>
   </div>
 
 
   <ul class="inline-list">
     <%= link_to reports_path, class:"text-decoration-none" do %>
-      <div class="all-button bg-primary", style= "color: #176B87;">
+      <div class="all-button bg-success", style= "color: white;">
         <%# <i class="fa-solid fa-file"></i> %>
         <p style="">All</p>
       </div>
     <% end %>
-
-
-    <% @reports.each do |report|%>
-      <% report.category %>
+    <% @categories.each do |category|%>
         <li>
-          <%= link_to reports_path(category: report.category ), class: "text-decoration-none" do %>
+          <%= link_to reports_path(category: category ), class: "text-decoration-none" do %>
           <div  class="all-button">
-            <%= render "icon_cat", category: report.category %>
+            <%= render "icon_cat", category: category %>
           </div>
           <% end %>
         </li>
       <% end %>
-
   </ul>
+
+  <div data-controller="slider" class="slider-container">
+    <div class="slider-content" data-slider-target="content">
+
+      <ul class="inline-list">
+        <%= link_to reports_path, class:"text-decoration-none" do %>
+          <div class="alt-button rounded-pill", style= "color: white;">
+            <%# <i class="fa-solid fa-file"></i> %>
+            <p style="">All</p>
+          </div>
+        <% end %>
+        <% @categories.each do |category|%>
+            <li>
+              <%= link_to reports_path(category: category ), class: "text-decoration-none" do %>
+              <div  class="alt-button rounded-pill">
+                <%= render "icon_cat", category: category %>
+              </div>
+              <% end %>
+            </li>
+          <% end %>
+      </ul>
+
+    </div>
+  </div>
+
 
   <%# <div class="d-flex justify-content-end">
     <%= link_to new_report_path do %>
@@ -56,7 +78,7 @@
   <div class="d-flex justify-content-end">
     <div class="dropdown">
       <!-- Button trigger dropdown -->
-      <i class="fa-solid fa-plus fa-2x text-primary mb-3 btn btn-success text-white" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
+      <i class="fa-solid fa-plus  text-primary mb-3 btn btn-success text-white" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
       <!-- Dropdown menu -->
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <li><%= link_to "Upload image", new_report_path, class: "dropdown-item" %></li>
