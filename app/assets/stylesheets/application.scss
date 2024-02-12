@@ -19,7 +19,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* This ensures that the body stretches to at least the height of the viewport */
-  }
+  overflow: scroll;
+}
 
 
 
@@ -28,6 +29,7 @@ h2, h3, h1 {
   text-align: center;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 650;
+  color: #176B87;
 }
 
 .content {

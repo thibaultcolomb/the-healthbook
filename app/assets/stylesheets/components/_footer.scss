@@ -1,5 +1,5 @@
 .footer {
-  background:  rgb(0,130,153);// #176B87;;
+  background:  #176B87;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,6 +10,7 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+
 }
 .footer-links {
   display: flex;
@@ -27,4 +28,8 @@
 }
 .footer .fa-heart {
   color: #D23333;
+}
+
+.footer i {
+  color: white;
 }
