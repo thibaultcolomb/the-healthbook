@@ -23,7 +23,7 @@
   <%= f.association :reports, label: "Report", collection: current_user.reports.all.map { |report| ["#{report.title}", report.id] }, include_blank: "Select Report" %>
  <%#= f.input :report_ids, collection: @reports %>
 
-  <%= f.submit "Create Appointment", class: 'btn btn-primary' %>
+  <%= f.submit "Create Appointment", class: 'btn btn-primary form-submit-btn' %>
 
   <% end %>
 </div>

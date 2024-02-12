@@ -1,0 +1,31 @@
+.hero-home {
+  background-size: cover;
+  background-position: top;
+  padding: 20px;
+  height: 55vh;
+  align-items: center;
+}
+
+.hero-container {
+  margin-top: 70px;
+  text-align: center;
+  align-items: center;
+}
+
+.hero-container h1, p {
+  color: white;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.hero-container p {
+  font-size: 24px;
+}
+
+.hero-container h1 {
+  font-size: 36px;
+}
+
+#sign-up-btn {
+  background-color: #9E0059;
+}
