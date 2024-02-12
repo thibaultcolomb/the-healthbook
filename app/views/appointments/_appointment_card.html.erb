@@ -20,12 +20,14 @@
 
     <div class="appointment-content">
       <%= "#{appointment.time.strftime("%I:%M %p")}" %>
-      <p class="">Reports: <% @appointments.each do |appointment| %>
+    <% if appointment.reports.present? %>
+      <p class="">Reports: <%# appointments.each do |appointment| %>
         <% appointment.reports.each_with_index do |report, index| %>
           <% next if index == 0 %>
             <%= link_to report.title, report_path(report) %>
           <% end %>
-        <% end %>
+      <%# end %>
+      <% end %>
       </p>
     </div>
 
