@@ -1,4 +1,3 @@
-
 <div class="sticky-head">
   <div class="d-flex align-items-center mt-5">
     <%= link_to root_path do %>
@@ -30,16 +29,16 @@
     <ul class="inline-list">
       <%= link_to reports_path, class:"text-decoration-none" do %>
         <div class="all-button", style= "background-color: #9e0059; color: white;">
-          <p ><strong>All</strong></p>
+          <p class="mt-0"><strong>All</strong></p>
         </div>
       <% end %>
       <% @categories.each do |category|%>
           <li>
             <%= link_to reports_path(category: category ), class: "text-decoration-none" do %>
             <div  class="all-button">
-              <div class="d-flex">
+              <div class="d-flex align-items-center">
                 <%= render "icon_cat", category: category %>
-                <p class="ms-2"><%= category %></p>
+                <p class="ms-2 mt-0"><%= category %></p>
               </div>
             </div>
             <% end %>
