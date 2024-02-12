@@ -2,7 +2,7 @@ class ReportsController < ApplicationController
   require 'rqrcode'
   def index
     if params[:query].present?
-      @reports = current_user.reports.search_by_title(params[:query])
+      @reports = current_user.reports.search_by_title_and_note(params[:query])
     elsif params[:category].present?
       @reports = current_user.reports.where(category: params[:category])
     elsif params[:report_date].present?

@@ -1,0 +1,43 @@
+<li class="appointment-card">
+  <div class="appointment-date">
+    <div>
+      <%= appointment.appointment_date.day %>
+    </div>
+    <div>
+      <%= appointment.appointment_date.strftime("%B").first(3) %>
+    </div>
+  </div>
+
+  <div class="appointment-details">
+    <div class="appointment-head">
+      <div class="appointment-title">
+        <p class="mb-0">Dr. <%= appointment.doctor.first_name + " " + appointment.doctor.last_name %></p>
+      </div>
+      <div class="appointment-specialty">
+        <%= appointment.doctor.specialty %>
+      </div>
+    </div>
+
+    <div class="appointment-content">
+      <%= "#{appointment.time.strftime("%I:%M %p")}" %>
+      <p class="">Reports: <% @appointments.each do |appointment| %>
+        <% appointment.reports.each_with_index do |report, index| %>
+          <% next if index == 0 %>
+            <%= link_to report.title, report_path(report) %>
+          <% end %>
+        <% end %>
+      </p>
+    </div>
+
+    <div class="appointment-edit">
+      <%= link_to edit_appointment_path(appointment) do %>
+        <i class="fa-solid fa-pen-to-square"></i>
+      <% end %>
+
+      <%= link_to appointment_path(appointment), data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"} do %>
+        <i class="fa-regular fa-trash-can ms-1"></i>
+      <% end %>
+    </div>
+
+  </div>
+</li>
