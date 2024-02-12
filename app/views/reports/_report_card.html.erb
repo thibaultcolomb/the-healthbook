@@ -1,26 +1,11 @@
  <li class="report-card">
-    <%# <div class="report-date">
-      <div >
-        <div class="">
-          <%= report.report_date.day %>
-        <%# </div> %>
-        <%# <div class=""> %>
-          <%# <%= (Date::MONTHNAMES[report.report_date.month]).first(3) %>
-        <%# </div> %>
-      <%# </div> %>
-    <%# </div> %>
-
 
     <%= render "reports/icon", report: report %>
 
     <div class="report-details">
       <div class="report-head">
         <div class="report-title ">
-          <p class="mb-0"><%= link_to report.title, report_path(report), class: "text-decoration-none", style: "color: rgb(0,95,195);" %></p>
-         <%# <div class="report-date">
-         <%= report.report_date.day %>
-          <%# <%= (Date::MONTHNAMES[report.report_date.month]).first(3) %>
-         <%# </div> %>
+          <p class="mb-0"><%= link_to report.title, report_path(report), class: "text-decoration-none", style: "rgb(0,130,153);" %></p>
         </div>
         <div class="report-category">
           <%= report.category %>
@@ -28,16 +13,9 @@
       </div>
      <div class="report-content">
         <%= strip_tags(report.note.sub(/.*?<body[^>]*>/im, '')) %>
-        <%# <%= report.note %>
       </div>
       <div class="report-edit">
         <%= report.report_date.day %> <%= (Date::MONTHNAMES[report.report_date.month]).first(3) %>
-        <%# <%= link_to edit_report_path(report) do%>
-          <%# <i class="fa-solid fa-pen-to-square"></i> %>
-        <%# <% end %>
-        <%# <%= link_to report_path(report), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
-          <%# <i class="fa-regular fa-trash-can ms-1"></i> %>
-        <%# <% end %>
       </div>
     </div>
     <%= link_to '', report_path(report), class: 'card-link'%>
