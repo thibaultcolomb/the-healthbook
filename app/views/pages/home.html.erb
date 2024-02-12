@@ -10,23 +10,23 @@
 
   </div>
 <div class="button-container">
-    <a class="btn btn-primary" href="#">Sign up</a>
+  <% unless user_signed_in? %>
+    <%= link_to "Sign up up", new_user_session_path, class: "btn btn-primary" %>
+    <% else %>
     <%= link_to reports_path, class: "btn btn-primary" do%>
       <i class="fa-solid fa-book" style="font-size: 20px; margin-right: 5px;"></i> Reports
-
     <% end %>
     <%= link_to appointments_path, class: "btn btn-primary" do %>
       <i class="fa-solid fa-calendar" style="font-size: 20px; margin-right: 5px;"></i> Appointments
     <% end %>
+  <% end %>
   </div>
 </div>
 
 
 <div class="home-cards-container">
 
-<% unless user_signed_in? %>
-  <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-<% end %>
+
 
 <% if user_signed_in? %>
 
