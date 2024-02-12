@@ -1,7 +1,8 @@
 .reports {
   list-style-type: none;
   padding-left: 0;
-
+  z-index: -1;
+  margin-top: 12px;
 }
 
 .report-card {
@@ -36,11 +37,11 @@
 }
 
 .report-icon {
-  background-color: rgb(0,130,153);
+  background-color: rgb(0,130,153); //rgb(0,122,255);
   height: 100%;
   width: 15%;
   object-fit: cover;
-  color: #D9D9D9;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -87,12 +88,13 @@
 
 
 .report-category {
-  color: rgb(0,130,153);
+  color: #9e0059;//rgb(88,86,214);
+  font-size: 12px;
 }
 
 .category-tag {
-  background-color: #D9D9D9;
-  color: #176B87;
+  background-color: white;
+  color: rgb(50,173,230);//#176B87;
   padding: 4px 6px;
 }
 
@@ -100,23 +102,56 @@
   max-height: 30%;
   flex-grow: 1;
   overflow: hidden;
+  color: rgb(100,100,100);
 }
 
 
 .all-button {
-  background-color: rgb(0,130,153);
+  background-color:   #9e0059; //#c1121f; //rgb(0,130,153);// rgb(0,130,153);
   height: 100%;
   object-fit: cover;
-  color: #D9D9D9;
+  color: white;
   display: inline-block;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 4px;
   border-radius: 4px;
+
 }
 
 .all-button p {
   text-decoration: none;
   margin-bottom: 0;
+  font-size: 12px;
+}
+
+
+.sticky-head {
+  position: sticky;
+  top: 65px;
+  z-index: 2;
+  background: white;
+  padding: 16px;
+  padding-bottom: 0;
+}
+
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+}
+.scrolling-wrapper::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar */
+}
+
+
+.add-button-div {
+  display: flex;
+  justify-content: end;
+}
+
+#dropdownMenuButton {
+  border-radius: 4px;
 }
