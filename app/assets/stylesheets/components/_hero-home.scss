@@ -2,17 +2,30 @@
   background-size: cover;
   background-position: top;
   padding: 20px;
-  height: 55vh; /* 20% of viewport height */
+  height: 55vh;
   align-items: center;
 }
 
 .hero-container {
-
-  text-align: center; /* Center align the content */
+  margin-top: 70px;
+  text-align: center;
   align-items: center;
 }
 
 .hero-container h1, p {
   color: white;
-  margin: 10px 0; /* Adjust this value to control the space between h1, p, and the button */
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.hero-container p {
+  font-size: 24px;
+}
+
+.hero-container h1 {
+  font-size: 36px;
+}
+
+#sign-up-btn {
+  background-color: #9E0059;
 }

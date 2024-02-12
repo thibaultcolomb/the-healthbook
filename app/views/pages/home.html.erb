@@ -11,13 +11,13 @@
   </div>
 <div class="button-container">
   <% unless user_signed_in? %>
-    <%= link_to "Sign up up", new_user_session_path, class: "btn btn-primary" %>
+    <%= link_to "Sign up", new_user_session_path, class: "btn btn-primary", id: "sign-up-btn" %>
     <% else %>
-    <%= link_to reports_path, class: "btn btn-primary" do%>
-      <i class="fa-solid fa-book" style="font-size: 20px; margin-right: 5px;"></i> Reports
+    <%= link_to new_report_path, class: "btn btn-primary" do%>
+      <i class="fa-solid fa-book" style="font-size: 20px; margin-right: 5px;"></i>  Add report
     <% end %>
-    <%= link_to appointments_path, class: "btn btn-primary" do %>
-      <i class="fa-solid fa-calendar" style="font-size: 20px; margin-right: 5px;"></i> Appointments
+    <%= link_to new_appointment_path, class: "btn btn-primary" do %>
+      <i class="fa-solid fa-calendar" style="font-size: 20px; margin-right: 5px;"></i>  Add appointment
     <% end %>
   <% end %>
   </div>
