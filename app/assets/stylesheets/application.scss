@@ -19,7 +19,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* This ensures that the body stretches to at least the height of the viewport */
-  }
+  overflow: scroll;
+}
 
 
 
