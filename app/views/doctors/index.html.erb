@@ -24,8 +24,8 @@
      <div class="avatar-card bg-secondary rounded-circle d-flex">
         <%= doctor.first_name[0] + doctor.last_name[0] %>
       </div>
-      <h3 class="card-title"><%= doctor.first_name + " " + doctor.last_name %></h3>
-      <p class="card-text"><%= doctor.specialty %></p>
+      <h3 class="doctor-card-title"><%= doctor.first_name + " " + doctor.last_name %></h3>
+      <p class="doctor-card-text"><%= doctor.specialty %></p>
 
       <div class="d-flex justify-content-end">
         <%= link_to edit_doctor_path(doctor) do %>
