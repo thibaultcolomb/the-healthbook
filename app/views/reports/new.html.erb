@@ -1,5 +1,5 @@
-<div class="main">
 
+<div class="sticky-head">
   <div class="d-flex align-items-center mt-5">
     <%= link_to reports_path do %>
       <i class="fa-solid fa-arrow-left ms-3"></i>
@@ -8,6 +8,8 @@
       <h3>New report</h3>
     </div>
   </div>
+</div>
 
+<div class="main">
   <%= render "form", report: @report %>
 </div>
