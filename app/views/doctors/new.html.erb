@@ -8,7 +8,7 @@
     </div>
   </div>
 
-  <%= simple_form_for @doctor do |f| %>
+  <%= simple_form_for @doctor, html: { autocomplete: 'off' } do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -16,6 +16,6 @@
     <%= f.input :last_name, input_html: { class: "bg-white" } %>
     <%= f.input :email, input_html: { class: "bg-white" } %>
     <%= f.input :specialty, collection: ["Internal Medicine", "Surgery", "Pediatrics" ,"Obstetrics and Gynecology", "Psychiatry", "Radiology", "Anesthesiology", "Emergency Medicine","Pathology", "Ophthalmology", "Otolaryngology (ENT)" , "Dermatology", "Neurology", "Urology", "Orthopedics" , "Physical Medicine and Rehabilitation", "Allergy and Immunology", "Infectious Diseases", "Endocrinology", "Cardiology"], input_html: { class: "bg-white" } %>
-    <%= f.submit "Add doctor", class: "btn bg-primary m-0 p-0 ms-1 p-1" %>
+    <%= f.submit "Create Doctor", class: "btn btn-primary form-submit-btn" %>
   <% end %>
 </div>
