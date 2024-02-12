@@ -1,0 +1,18 @@
+.hero-home {
+  background-size: cover;
+  background-position: top;
+  padding: 20px;
+  height: 55vh; /* 20% of viewport height */
+  align-items: center;
+}
+
+.hero-container {
+
+  text-align: center; /* Center align the content */
+  align-items: center;
+}
+
+.hero-container h1, p {
+  color: white;
+  margin: 10px 0; /* Adjust this value to control the space between h1, p, and the button */
+}
