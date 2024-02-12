@@ -86,9 +86,8 @@ class ReportsController < ApplicationController
     @link_for_qr_code = "www.thehealthbook.online/reports/#{@report.id}"
     @qr_code = RQRCode::QRCode.new(@link_for_qr_code)
     @svg = @qr_code.as_svg(
-      offset: 0,
-      fill: 'white',
-      color: '64CCC5',
+      offset: 1,
+      color: white,
       shape_rendering: 'crispEdges',
       standalone: true,
       module_size: 4
