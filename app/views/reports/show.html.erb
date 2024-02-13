@@ -61,7 +61,9 @@
     <h3>original documents</h3>
     <% if @report.photo.present? %>
       <div class="report-image mt-3">
-        <%= cl_image_tag(@report.photo.key , height: 180, width: 120, crop: :fill) %>
+        <%= link_to "", "data-bs-toggle": "modal", "data-bs-target": "#imageModal" do %>
+          <%= cl_image_tag(@report.photo.key , height: 180, width: 120, crop: :fill) %>
+        <% end %>
       </div>
 
     <% else %>
@@ -102,6 +104,20 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <%= cl_image_tag(@report.photo.key, class: "img-fluid") %>
+          </div>
         </div>
       </div>
     </div>
