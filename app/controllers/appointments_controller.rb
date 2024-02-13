@@ -2,11 +2,16 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
+    @appointment.build_doctor
     @doctors = Doctor.all
   end
 
   def create
     @appointment = Appointment.new(appointment_params)
+    @doctor = Doctor.new(appointment_params[:doctor_attributes])
+    @doctor.user = current_user
+    @doctor.save
+    @appointment.doctor = @doctor
 
    @report_ids = params[:appointment][:report_ids]
 
@@ -57,7 +62,7 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:appointment_date, :time, :doctor_id, report_ids: [])
+    params.require(:appointment).permit(:appointment_date, :time, :doctor_id, report_ids: [], doctor_attributes: [:email, :first_name, :last_name, :specialty])
   end
 
   def set_appointment

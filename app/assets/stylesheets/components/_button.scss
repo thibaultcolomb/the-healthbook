@@ -12,3 +12,24 @@
   justify-content: between;
 
 }
+
+
+.btn-select-doctors {
+  border-radius:0.375rem;
+  display: flex;
+  justify-content: between;
+  margin: 0 auto;
+  width: 45%;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #dee2e6;
+}
+
+.doctors-button-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+}
