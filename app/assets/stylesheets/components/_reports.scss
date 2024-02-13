@@ -43,7 +43,7 @@
 
 .report-details {
   justify-items: start;
-  padding: 8px;
+  padding: 7px;
   width: 85%;
   font-size: 12px;
   line-height: 1.4;
@@ -72,7 +72,7 @@
   flex-shrink: 0;
   display: flex;
   justify-content: end;
-  z-index: 2;
+  z-index: 0;
 }
 
 
@@ -92,6 +92,7 @@
   flex-grow: 1;
   overflow: hidden;
   color: rgb(100,100,100);
+  z-index: 1;
 }
 
 
