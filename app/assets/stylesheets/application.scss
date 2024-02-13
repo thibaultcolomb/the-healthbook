@@ -21,7 +21,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* This ensures that the body stretches to at least the height of the viewport */
-  overflow: scroll;
 }
 
 
@@ -37,4 +36,5 @@ h2, h3, h1 {
 .content {
   flex: 1;
   margin-bottom: 100px;
+  overflow: scroll;
 }
