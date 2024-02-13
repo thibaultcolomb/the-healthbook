@@ -1,7 +1,7 @@
 <div class='main' data-controller="show-doctors">
  <div class="d-flex align-items-center mt-5">
     <%= link_to appointments_path do %>
-      <i class="fa-solid fa-arrow-left ms-3 back-arrow"></i>
+      <i class="fa-solid fa-arrow-left ms-3"></i>
     <% end %>
     <div class="mx-auto text-center">
       <h2>New Appointment</h2>
@@ -18,10 +18,11 @@
   <%= f.association :reports, label: "Report", collection: current_user.reports.all.map { |report| ["#{report.title}", report.id] }, include_blank: "Select Report" %>
   <%#= f.input :report_ids, collection: @reports %>
   <div class="doctors-button-container">
-  <%= button_tag "Add a new doctor", type: "button", class: "btn btn-select-doctors", id: "add-doctor-button", data: { action: "click->show-doctors#show" } %>
-  <%= button_tag "Choose an existing doctor", type: "button", class: "btn btn-select-doctors", data: { action: "click->show-doctors#show" } %>
+    <button type="button" class="btn-select-doctors btn-select-doctors-active" data-action="click->show-doctors#showselect" data-show-doctors-target="selectbutton">Choose an existing doctor</button>
+    <button type="button" class="btn-select-doctors" data-action="click->show-doctors#showquestions" data-show-doctors-target="questionsbutton">Add a new doctor</button>
+
   </div>
-  <div data-show-doctors-target="select" class="hidden">
+  <div data-show-doctors-target="select">
     <%#
     <%= f.association :doctor, label: "Doctor", collection: Doctor.all, label_method: :first_name, value_method: :id, include_blank: "Select Doctor" %>
     <%= f.association :doctor, label: "Doctor", collection: current_user.doctors.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name}", doctor.id] }, include_blank: "Select Doctor" %>
@@ -30,7 +31,7 @@
 
 
 
-  <div data-show-doctors-target="questions">
+  <div data-show-doctors-target="questions" class="hidden">
   <%= f.simple_fields_for :doctor do |d| %>
     <%= d.input :first_name, input_html: { class: "bg-white" } %>
     <%= d.input :last_name, input_html: { class: "bg-white" } %>
