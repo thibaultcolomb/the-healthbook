@@ -2,14 +2,14 @@ class ReportsController < ApplicationController
   require 'rqrcode'
   def index
     if params[:query].present?
-      @reports = current_user.reports.search_by_title_and_note(params[:query])
+      @reports = current_user.reports.order(report_date: :desc).search_by_title_and_note(params[:query])
     elsif params[:category].present?
-      @reports = current_user.reports.where(category: params[:category])
+      @reports = current_user.reports.order(report_date: :desc).where(category: params[:category])
     elsif params[:report_date].present?
-      @reports = current_user.reports.where(report_date: params[:report_date])
+      @reports = current_user.reports.order(report_date: :desc).where(report_date: params[:report_date])
 
     else
-      @reports = current_user.reports.all
+      @reports = current_user.reports.all.order(report_date: :desc)
     end
 
     @categories = Report.pluck(:category).uniq
