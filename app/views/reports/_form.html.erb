@@ -1,6 +1,6 @@
 
 <div data-controller="show-doctors">
-<%= simple_form_for report, html: { autocomplete: 'off' } do |f| %>
+  <%= simple_form_for report, html: { autocomplete: 'off' } do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -10,20 +10,27 @@
                 as: :string,
                 input_html: { data: { controller: "datepicker" }, class: "bg-white"}
                 %>
-    <%= f.association :doctor, label: "Doctor", collection: current_user.doctors.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name}", doctor.id] } , include_blank: "Select Doctor", input_html: {class: "bg-white"} %>
+    <%# Should do mapping in controller %>
+
     <%= f.input :category, collection: ['Blood Tests', 'Imaging', 'Surgery', 'Pathology', 'Cardiology', 'Endoscopy', 'Pulmonary Function Test (PFT)', 'Genetic Testing', 'Allergy Testing', 'Neurological', 'Dermatology', 'Obstetric and Gynecological', 'Urology', 'Orthopedic', 'Gastroenterology', 'Ophthalmology', 'Nuclear Medicine', 'Psychiatric', 'Rehabilitation', 'Dental'], input_html: {class: "bg-white"}%>
     <%= f.input :note, input_html: {class: "bg-white"} %>
     <%= f.input :photo, as: :file, input_html: {class: "bg-white"} %>
     <%= f.input :pdf, as: :file, input_html: {class: "bg-white"} %>
-    <div id="additional-doctor-fields" style="display: none;">
-    <%= f.simple_fields_for :doctor do |d| %>
-      <%= d.input :first_name, input_html: { class: "bg-white" } %>
-      <%= d.input :last_name, input_html: { class: "bg-white" } %>
-      <%= d.input :email, input_html: { class: "bg-white" } %>
-      <%= d.input :specialty, input_html: { class: "bg-white" } %>
+    <div class="d-flex">
+    <%= button_tag "Add a new doctor", type: "button", class: "btn btn-select-doctors", id: "add-doctor-button", data: { action: "click->show-doctors#show" } %>
+    <%= button_tag "Choose an existing doctor", type: "button", class: "btn btn-select-doctors", data: { action: "click->show-doctors#show" } %>
+    </div>
+    <div data-show-doctors-target="select" class="hidden">
+      <%= f.association :doctor, label: "Doctor", collection: current_user.doctors.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name}", doctor.id] } + [["Add  Doctors", nil]], include_blank: "Select Doctor", input_html: {class: "bg-white"}%>
+    </div>
+    <div id="additional-doctor-fields" data-show-doctors-target="questions">
+      <%= f.simple_fields_for :doctor do |d| %>
+        <%= d.input :first_name, input_html: { class: "bg-white" } %>
+        <%= d.input :last_name, input_html: { class: "bg-white" } %>
+        <%= d.input :email, input_html: { class: "bg-white" } %>
+        <%= d.input :specialty, collection: ["Internal Medicine", "Surgery", "Pediatrics", "Obstetrics and Gynecology", "Psychiatry", "Radiology", "Anesthesiology", "Emergency Medicine", "Pathology", "Ophthalmology", "Otolaryngology (ENT)", "Dermatology", "Neurology", "Urology", "Orthopedics", "Physical Medicine and Rehabilitation", "Allergy and Immunology", "Infectious Diseases", "Endocrinology", "Cardiology"], input_html: { class: "bg-white" }%>
+      <% end %>
     </div>
     <%= f.submit class: "btn btn-primary form-submit-btn" %>
-    <% end %>
-    <%= button_tag "Add Doctor", type: "button", id: "add-doctor-button", data: { action: "click->show-doctors#show_doctors" } %>
-    <% end %>
+  <% end %>
 </div>
