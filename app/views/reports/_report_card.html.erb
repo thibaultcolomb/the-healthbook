@@ -12,7 +12,14 @@
         </div>
       </div>
      <div class="report-content">
-        <%= strip_tags(report.note.sub(/.*?<body[^>]*>/im, '')) %>
+        <% if report.note.present? %>
+          <%= strip_tags(report.note.sub(/.*?<body[^>]*>/im, '')) %>
+        <% else %>
+          <div class="d-flex align-items-between">
+            <div class="spinner-border spinner-border-sm ml-auto me-2" role="status" aria-hidden="true"></div>
+            <strong>Loading...</strong>
+          </div>
+        <% end %>
       </div>
       <div class="report-edit">
         <%= report.report_date.day %> <%= (Date::MONTHNAMES[report.report_date.month]).first(3) %>
