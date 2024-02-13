@@ -1,5 +1,5 @@
 <div class='main'>
-  <%= simple_form_for @doctor do |f| %>
+  <%= simple_form_for @doctor html: { autocomplete: 'off' } do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -11,6 +11,6 @@
                                             , "Pathology", "Ophthalmology", "Otolaryngology (ENT)" , "Dermatology", "Neurology",
                                             "Urology", "Orthopedics" , "Physical Medicine and Rehabilitation", "Allergy and Immunology",
                                              "Infectious Diseases", "Endocrinology", "Cardiology"], input_html: { class: "bg-white" }%>
-    <%= f.submit "Add doctor", class: "btn bg-primary m-0 p-0 ms-1 p-1"%>
+    <%= f.submit "Add doctor", class: "btn btn-primary form-submit-btn"%>
     <% end %>
 </div>

@@ -1,98 +1,107 @@
-
-<div class="main">
+<div class="sticky-head">
   <div class="d-flex align-items-center mt-5">
     <%= link_to reports_path do %>
-      <i class="fa-solid fa-arrow-left ms-3"></i>
+      <i class="fa-solid fa-arrow-left ms-3 back-arrow" ></i>
     <% end %>
-
-
     <div class="mx-auto text-center">
       <h2><%= @report.title %></h2>
     </div>
   </div>
 
-  <div class="d-flex justify-content-end">
-      <%= link_to edit_report_path(@report) do %>
-      <i class="fa-solid fa-pen-to-square me-3"></i>
-
+  <div class="d-flex justify-content-end my-2">
+    <%= link_to edit_report_path(@report) do %>
+      <i class="fa-solid fa-pen-to-square me-3 btn bg-primary text-white"></i>
     <% end %>
       <%= link_to "", "data-bs-toggle": "modal", "data-bs-target": "#exampleModal" do %>
-      <i class="fa-solid fa-share me-3"></i>
+        <i class="fa-solid fa-share me-3 btn bg-primary text-white"></i>
     <% end %>
-    <!-- Button trigger modal -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div>
-          <h2>Share <%= @report.title %></h2>
-          <h3>by QR Code</h3>
-          <div class="qr_code">
-            <%= @svg.html_safe %>
-          </div>
-        </div>
-
-        <div>
-          <h2>Share <%= @report.title %></h2>
-          <h3>by E-mail</h3>
-          <div class="email" style="text-align: center;">
-            <%= form_with url: report_path(@report), method: :post, html: { style: "display: flex; justify-content: center; align-items: center;" } do |f| %>
-              <%= f.label :doctor_email, "Select Doctor:" %>
-              <%= f.select :doctor_email, current_user.doctors.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name} (#{doctor.email})", doctor.email] }, { include_blank: "Select Doctor" }, { style: 'width: 50%' } %>
-              <%= f.submit "Share by email", class: "btn bg-primary m-0 p-0 ms-1 p-1" %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
+    <%= link_to report_path(@report), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+      <i class="fa-regular fa-trash-can btn bg-primary text-white"></i>
+    <% end %>
   </div>
-</div>
 
-      <%= link_to report_path(@report), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-      <i class="fa-regular fa-trash-can"></i>
-      <% end %>
-  </div>
+
 
 
   <%# start card for the report %>
-  <div class="one-report-card ">
-
+  <div class="one-report-card">
     <div class="one-report-details">
-     <% if @report.doctor.present? %>
-  <h4><%=@report.doctor.first_name + " " + @report.doctor.last_name + " | " + @report.doctor.specialty %></h4>
-  <div class="d-flex">
-     <%= @report.report_date.day %>
-          <%= (Date::MONTHNAMES[@report.report_date.month]).first(3) %>
+      <% if @report.doctor.present? %>
+        <div class="d-flex align-items-center justify-content-between">
+          <p style="font-size: 16px;"><strong><%=@report.doctor.first_name + " " + @report.doctor.last_name%></strong></p>
+          <p  class= "ms-2" style="font-size: 16px;"> | </p>
+          <p class= "ms-2" style="font-size: 16px; color: #9E0059"> <%= @report.doctor.specialty %></p>
         </div>
-<% else %>
-  <h4>No doctor selected</h4>
-  <div class="d-flex">
-     <%= @report.report_date.day %>
-          <%= (Date::MONTHNAMES[@report.report_date.month]).first(3) %>
+
+        <div class="d-flex">
+          <%= @report.report_date.strftime("%A") %>
+          <%= @report.report_date.day %>
+          <%= (Date::MONTHNAMES[@report.report_date.month]) %>
         </div>
-<% end %>
-      </div>
 
-      </div>
-
+      <% else %>
+        <h4>No doctor selected</h4>
+        <div class="d-flex">
+          <%= @report.report_date.day %>
+          <%= (Date::MONTHNAMES[@report.report_date.month]) %>
+        </div>
+      <% end %>
     </div>
-
   </div>
 
-   <div class="one-report-content">
- <%= @report.note.html_safe %>
 </div>
 
-<div class="one-report-documents">
-<h3>original documents</h3>
-<%#= @report.uploaded_file %>
+
+<div class="main">
+  <div class="one-report-content mt-3">
+    <%= @report.note.html_safe %>
+  </div>
+
+  <div class="one-report-documents mt-3">
+    <h3>original documents</h3>
+    <% if @report.photo.present? %>
+      <div class="report-image mt-3">
+        <%= cl_image_tag(@report.photo.key , height: 180, width: 120, crop: :fill) %>
+      </div>
+
+    <% else %>
+      <%= "You don't have any document attached." %>
+    <% end %>
+  </div>
 </div>
+
+
+    <!-- Button trigger modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <h2>Share <%= @report.title %></h2>
+              <h3>by QR Code</h3>
+              <div class="qr_code">
+                <%= @svg.html_safe %>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2>Share <%= @report.title %></h2>
+            <h3>by E-mail</h3>
+            <div class="email" style="text-align: center;">
+              <%= form_with url: report_path(@report), method: :post, html: { style: "display: flex; justify-content: center; align-items: center;" } do |f| %>
+                <%= f.label :doctor_email, "Select Doctor:" %>
+                <%= f.select :doctor_email, current_user.doctors.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name} (#{doctor.email})", doctor.email] }, { include_blank: "Select Doctor" }, { style: 'width: 50%' } %>
+                <%= f.submit "Share by email", class: "btn bg-primary m-0 p-0 ms-1 p-1" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>

@@ -7,6 +7,21 @@
 }
 
 
-.card-text {
+.doctor-card-text {
   font-weight: bold;
+  color: #176B87;
+  text-align: right;
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  margin-left: 90px;
+
+}
+
+.doctor-card-title {
+  color: #176B87;
+  text-align: right;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }

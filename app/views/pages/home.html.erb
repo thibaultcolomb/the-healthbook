@@ -1,63 +1,65 @@
+<body id="home">
+
 
 <div class="home-container">
+<%# hero section %>
+<div class="hero-home" style="background-image: url(https://images.unsplash.com/photo-1676364424409-e87919caffe1?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+  <div class="hero-container">
+    <h1>HealthBook</h1>
+    <p>Take your health into your own hands and keep track of your medical history</p>
 
-  <div class="button-container">
-    <%= link_to reports_path, class: "btn btn-primary" do%>
-      <i class="fa-solid fa-book" style="font-size: 20px; margin-right: 5px;"></i> Reports
-
-    <% end %>
-    <%= link_to appointments_path, class: "btn btn-primary" do %>
-      <i class="fa-solid fa-calendar" style="font-size: 20px; margin-right: 5px;"></i> Appointments
-    <% end %>
   </div>
+<div class="button-container">
+  <% unless user_signed_in? %>
+    <%= link_to "Sign up", new_user_session_path, class: "btn btn-primary", id: "sign-up-btn" %>
+  <% else %>
+    <%= link_to new_report_path, class: "btn btn-primary" do%>
+      <i class="fa-solid fa-book" style="font-size: 20px; margin-right: 5px;"></i>  Add report
+    <% end %>
+    <%= link_to new_appointment_path, class: "btn btn-primary" do %>
+      <i class="fa-solid fa-calendar" style="font-size: 20px; margin-right: 5px;"></i>  Add appointment
+    <% end %>
+  <% end %>
+  </div>
+</div>
+
 
 <div class="home-cards-container">
 
-<% unless user_signed_in? %>
-  <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-<% end %>
 
-<% if user_signed_in? %>
+  <% if user_signed_in? %>
+  <%# Report card %>
 
-<%# Report card %>
-
-
-<% reports = current_user.reports.where.not(viewed_at: nil).order(viewed_at: :desc).limit(3) %>
-<% if reports.first.present? %>
-  <h3>Recently viewed reports</h3>
-  <ul class="reports">
-    <% reports.each do |report|%>
-      <%= render "reports/report_card", report: report %>
+    <% reports = current_user.reports.where.not(viewed_at: nil).order(viewed_at: :desc).limit(3) %>
+    <% if reports.first.present? %>
+      <h3>Recently viewed reports</h3>
+      <ul class="reports">
+        <% reports.each do |report|%>
+          <%= render "reports/report_card", report: report %>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
 
 <%# display the current users appointments %>
 
     <% next_appointment = current_user.appointments.where('appointment_date > ?', Time.now).order(appointment_date: :asc).first %>
     <% if next_appointment.present? %>
       <h3>Your next appointment</h3>
-    <div class="appointment card" style="display: flex; justify-content: center;">
-        <div class="card-body">
-        <div class="date d-flex flex-column align-items-center">
-          <h3 class="card-title" style="border-bottom: 1px solid black;"><%= next_appointment.appointment_date.strftime("%B") %></h3>
-          <div style="flex-grow: 1;">
-            <h3 class="card-title"><%= next_appointment.appointment_date.day %></h3>
-          </div>
+      <%= render "appointments/appointment_card", appointment: next_appointment%>
+</div>
 
-        </div>
-          <div style="width: 150px;">
-            <%= "#{next_appointment.appointment_date.strftime("%I:%M %p")}" %>
-            <%# .strftime("%A, %d %b %Y %l:%M %p) %>
+</div>
 
-            <p class="card-subtitle mb-2 text-muted">Dr. <%= next_appointment.doctor.first_name + " " + next_appointment.doctor.last_name %></p>
-          </div>
-        </div>
-      </div>
     <% else %>
       <h3>You have no upcoming appointments</h3>
     <% end %>
-
+  <% else %>
+ <ul class="fa-ul" >
+    <li><h3 style="text-align: left;"><span class="fa-li"><i class="fa-solid fa-check"></i></span>Have your medical documents always with you</h3></li>
+    <li><h3 style="text-align: left;"><span class="fa-li"><i class="fa-solid fa-check"></i></span>Transcripe long reports to text</h3></li>
+    <li><h3 style="text-align: left;"><span class="fa-li"><i class="fa-solid fa-check"></i></span>Share easyily your medical reocrd easily with doctors</h3></li>
+  </ul>
   <% end %>
 </div>
 </div>
+</body>

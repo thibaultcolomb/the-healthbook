@@ -2,7 +2,7 @@ class ReportsController < ApplicationController
   require 'rqrcode'
   def index
     if params[:query].present?
-      @reports = current_user.reports.search_by_title(params[:query])
+      @reports = current_user.reports.search_by_title_and_note(params[:query])
     elsif params[:category].present?
       @reports = current_user.reports.where(category: params[:category])
     elsif params[:report_date].present?
@@ -90,9 +90,8 @@ class ReportsController < ApplicationController
     @link_for_qr_code = "www.thehealthbook.online/reports/#{@report.id}"
     @qr_code = RQRCode::QRCode.new(@link_for_qr_code)
     @svg = @qr_code.as_svg(
-      offset: 0,
-      fill: 'white',
-      color: '64CCC5',
+      offset: 1,
+      color: white,
       shape_rendering: 'crispEdges',
       standalone: true,
       module_size: 4

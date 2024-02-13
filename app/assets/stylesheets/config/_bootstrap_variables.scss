@@ -7,13 +7,16 @@
 // General style
 $font-family-sans-serif: 'Space Grotesk', sans-serif;
 $headings-font-family:   'Space Grotesk', sans-serif;
-$body-bg:                #176B87;
+
+$body-bg:                white;
+
 $font-size-base:         1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    #64CCC5; //for primary buttons
-$success:    $green;
+
+$primary:    #176B87; //for primary buttons
+$success:    $blue-med;
 $info:       #D9D9D9; //for seondary buttons
 $danger:     $red;
 $warning:    $orange;

@@ -1,5 +1,6 @@
+
 <div data-controller="show-doctors">
-<%= simple_form_for report do |f| %>
+<%= simple_form_for report, html: { autocomplete: 'off' } do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -21,17 +22,8 @@
       <%= d.input :email, input_html: { class: "bg-white" } %>
       <%= d.input :specialty, input_html: { class: "bg-white" } %>
     </div>
-
-
-
-
-
-
-
+    <%= f.submit class: "btn btn-primary form-submit-btn" %>
     <% end %>
     <%= button_tag "Add Doctor", type: "button", id: "add-doctor-button", data: { action: "click->show-doctors#show_doctors" } %>
-
-
-    <%= f.submit class: "btn btn-primary" %>
     <% end %>
 </div>

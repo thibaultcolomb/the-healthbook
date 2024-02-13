@@ -1,12 +1,13 @@
 
 .btn.btn-primary, .btn.btn-info {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border-radius:    20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 20px;
+  font-weight: bold;
   }
 
 .btn-home {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border-radius:    20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius:20px;
   display: flex;
   justify-content: between;
 
