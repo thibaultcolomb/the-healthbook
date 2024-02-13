@@ -35,11 +35,7 @@ class ReportsController < ApplicationController
   def new
     @report = Report.new
     @report.build_doctor
-
-
   end
-
-
 
   def create
     @report = Report.new(report_params)
@@ -102,14 +98,12 @@ class ReportsController < ApplicationController
       standalone: true,
       module_size: 4
     )
-
   end
 
   def email
     @report = Report.find(params[:id])
     @recipient_email = params[:doctor_email]
     HealthMailer.share_report(@report, @recipient_email).deliver_now
-
 
    redirect_to report_path(@report)
   end
