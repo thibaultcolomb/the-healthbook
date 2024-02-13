@@ -45,12 +45,15 @@ class ReportsController < ApplicationController
       @report.doctor = Doctor.find(params[:report][:doctor_id])
     end
 
-
     @report.viewed_at = Time.now
 
     if params[:report][:photo].present?
       to_be_formatted = convert_image_to_content
-      @report.note = format_content(to_be_formatted)
+      @report.save
+      NewReportJob.perform_later(@report.id, to_be_formatted)
+      flash[:notice] = "Your report is being updated"
+
+      # @report.note = format_content(to_be_formatted)
     elsif params[:report][:pdf].present?
       @report.note = convert_pdf_to_text
     end
@@ -61,7 +64,6 @@ class ReportsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
 
   def edit
     @report = current_user.reports.find(params[:id])

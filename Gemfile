@@ -45,6 +45,10 @@ gem "ruby-openai"
 # pdf reader
 gem 'pdf-reader', '~> 1.4'
 
+# Sidekiq
+gem "sidekiq", '~> 6.5.5'
+gem "sidekiq-failures", "~> 1.0"
+
 # Use Redis adapter to run Action Cable in production
 #gem "redis", ">= 4.0.1"
 
