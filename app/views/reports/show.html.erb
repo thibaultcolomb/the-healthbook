@@ -79,7 +79,7 @@
           <div class="modal-header">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body m-3 border-bottom">
             <div>
               <h2>Share <%= @report.title %></h2>
               <h3>by QR Code</h3>
@@ -89,13 +89,13 @@
             </div>
           </div>
           <div>
-            <h2>Share <%= @report.title %></h2>
             <h3>by E-mail</h3>
-            <div class="email" style="text-align: center;">
+            <div class="email m-3" style="text-align: center;">
               <%= form_with url: report_path(@report), method: :post, html: { style: "display: flex; justify-content: center; align-items: center;" } do |f| %>
-                <%= f.label :doctor_email, "Select Doctor:" %>
                 <%= f.select :doctor_email, current_user.doctors.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name} (#{doctor.email})", doctor.email] }, { include_blank: "Select Doctor" }, { style: 'width: 50%' } %>
-                <%= f.submit "Share by email", class: "btn bg-primary m-0 p-0 ms-1 p-1" %>
+                <%= f.submit "Share", :onclick => "return confirm('#{@report.title } has been shared')",  class: "btn bg-primary m-0 p-0 ms-1 p-1", style:"color:white;", :confirm => 'Are you sure?' %>
+
+
               <% end %>
             </div>
           </div>
