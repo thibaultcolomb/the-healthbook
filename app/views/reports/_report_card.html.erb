@@ -1,3 +1,4 @@
+<%= link_to report_path(report), class: 'card-link' do %>
  <li class="report-card">
 
     <%= render "reports/icon", report: report %>
@@ -5,7 +6,7 @@
     <div class="report-details">
       <div class="report-head">
         <div class="report-title ">
-          <p class="mb-0 mt-0"><%= link_to report.title, report_path(report), class: "text-decoration-none" %></p>
+          <p class="mb-0 mt-0"><%#= link_to report.title, report_path(report), class: "text-decoration-none" %><%= report.title %></p>
         </div>
         <div class="report-category">
           <%= report.category %>
@@ -18,5 +19,6 @@
         <%= report.report_date.day %> <%= (Date::MONTHNAMES[report.report_date.month]).first(3) %>
       </div>
     </div>
-    <%= link_to '', report_path(report), class: 'card-link'%>
+
   </li>
+<% end %>

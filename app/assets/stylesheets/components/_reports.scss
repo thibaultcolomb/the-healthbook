@@ -1,7 +1,6 @@
 .reports {
   list-style-type: none;
   padding-left: 0;
-  z-index: -1;
   margin-top: 12px;
 }
 
@@ -16,15 +15,6 @@
   position:relative;
   border-radius: 4px;
 }
-
-.card-link {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 0;
-  }
 
 .report-date > div > div{
   display: flex;
