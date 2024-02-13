@@ -18,6 +18,7 @@ Rails.application.configure do
   # Enable server timing
   config.server_timing = true
 
+
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?
@@ -33,6 +34,8 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
+
+  config.action_mailer.delivery_method = :letter_opener
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :cloudinary

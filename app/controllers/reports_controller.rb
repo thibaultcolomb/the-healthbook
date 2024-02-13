@@ -36,7 +36,10 @@ class ReportsController < ApplicationController
     @report = Report.new
     @report.build_doctor
 
+
   end
+
+
 
   def create
     @report = Report.new(report_params)
@@ -89,6 +92,7 @@ class ReportsController < ApplicationController
   def share
     @report = current_user.reports.find(params[:id])
     @doctors = Doctor.all
+    recipient_email = params[:report][:doctor_email]
     @link_for_qr_code = "www.thehealthbook.online/reports/#{@report.id}"
     @qr_code = RQRCode::QRCode.new(@link_for_qr_code)
     @svg = @qr_code.as_svg(
@@ -99,6 +103,15 @@ class ReportsController < ApplicationController
       module_size: 4
     )
 
+  end
+
+  def email
+    @report = Report.find(params[:id])
+    @recipient_email = params[:doctor_email]
+    HealthMailer.share_report(@report, @recipient_email).deliver_now
+
+
+   redirect_to report_path(@report)
   end
 
   private

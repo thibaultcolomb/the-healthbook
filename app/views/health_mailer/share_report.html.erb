@@ -1,0 +1,9 @@
+<p>Hi:</p>
+<p>You have received a shared report:</p>
+<p>Report title: <%= @report.title %></p>
+
+<% if @report.photo.attached? %>
+  <%= cl_image_tag(@report.photo.key, width: 300, height: 300, crop: :fill) %>
+<% else %>
+  <p>No photo or PDF attached to this report.</p>
+<% end %>

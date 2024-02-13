@@ -93,7 +93,7 @@
           <div>
             <h3>by E-mail</h3>
             <div class="email m-3" style="text-align: center;">
-              <%= form_with url: report_path(@report), method: :post, html: { style: "display: flex; justify-content: center; align-items: center;" } do |f| %>
+              <%= form_with url: email_path(@report), method: :post, html: { style: "display: flex; justify-content: center; align-items: center;" } do |f| %>
                 <%= f.select :doctor_email, current_user.doctors.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name} (#{doctor.email})", doctor.email] }, { include_blank: "Select Doctor" }, { style: 'width: 50%' } %>
                 <%= f.submit "Share", :onclick => "return confirm('#{@report.title } has been shared')",  class: "btn bg-primary m-0 p-0 ms-1 p-1", style:"color:white;", :confirm => 'Are you sure?' %>
 

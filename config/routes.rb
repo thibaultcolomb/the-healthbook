@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :appointments
   resources :doctors
   get "/reports/:id/share", to: "reports#share", as: :share
+  post "/reports/:id/email", to: "reports#email", as: :email
 
   require "sidekiq/web"
   authenticate :user, ->(user) { user.admin? } do
