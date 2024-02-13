@@ -1,47 +1,42 @@
 <div class="main">
-
   <div class="d-flex align-items-center mt-5">
     <%= link_to root_path do %>
-      <i class="fa-solid fa-arrow-left ms-3 text-primary mb-3 btn bg-primary text-white"></i>
+      <i class="fa-solid fa-arrow-left ms-3 back-arrow"></i>
     <% end %>
     <div class="mx-auto text-center">
       <h2>Your Doctors</h2>
     </div>
   </div>
 
- <div class="d-flex justify-content-end">
-  <%= link_to new_doctor_path do %>
-<i class="fa-solid fa-plus text-primary mb-3 btn bg-primary text-white"></i>
+  <div class="d-flex justify-content-end">
+    <%= link_to new_doctor_path do %>
+      <i class="fa-solid fa-plus text-primary mb-3 btn bg-primary text-white"></i>
+    <% end %>
+  </div>
 
-  <% end %>
-</div>
+  <div class="doctor-cards">
+    <% @doctors.each do |doctor| %>
+      <div class="doctor card">
+        <div class="avatar-doctor bg-secondary rounded-circle d-flex justify-content-center align-items-center">
+          <%= doctor.first_name[0] + doctor.last_name[0] %>
+        </div>
 
+        <div class="doctor-info d-flex justify-content-end">
+          <div>
+            <h3 class="doctor-card-title"><%= doctor.first_name + " " + doctor.last_name %></h3>
+            <p class="doctor-card-text"><%= doctor.specialty %></p>
+          </div>
 
-
-<div class="doctor-cards">
-  <% @doctors.each do |doctor| %>
-    <div class="doctor card" style=" width: 18rem;">
-     <div class="avatar-card bg-secondary rounded-circle d-flex">
-        <%= doctor.first_name[0] + doctor.last_name[0] %>
+          <div class="mt-0 ml-auto">
+            <%= link_to edit_doctor_path(doctor) do %>
+              <i class="fa-regular fa-pen-to-square me-1"></i>
+            <% end %>
+            <%= link_to edit_doctor_path(doctor), data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"} do %>
+              <i class="fa-regular fa-trash-can"></i>
+            <% end %>
+          </div>
+        </div>
       </div>
-      <h3 class="doctor-card-title"><%= doctor.first_name + " " + doctor.last_name %></h3>
-      <p class="doctor-card-text"><%= doctor.specialty %></p>
-
-      <div class="d-flex justify-content-end">
-        <%= link_to edit_doctor_path(doctor) do %>
-          <i class="fa-regular fa-pen-to-square me-3"></i>
-        <% end %>
-
-        <%= link_to doctor_path(doctor), data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"} do %>
-          <i class="fa-regular fa-trash-can"></i>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-
-
-</div>
+    <% end %>
   </div>
 </div>
