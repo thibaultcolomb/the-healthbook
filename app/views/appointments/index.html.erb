@@ -22,7 +22,7 @@
   <h3>Upcoming</h3>
   <% @appointments.sort_by(&:appointment_date).each do |appointment| %>
     <% if appointment.appointment_date > Date.today %>
-      <%= render "appointment_card", appointment: appointment %>
+      <%= render "appointment_swiper", appointment: appointment %>
     <% end %>
   <% end %>
 

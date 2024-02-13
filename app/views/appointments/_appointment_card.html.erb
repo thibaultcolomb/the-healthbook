@@ -31,41 +31,7 @@
       </p>
     </div>
 
-    <div class="appointment-edit">
-      <%= link_to edit_appointment_path(appointment) do %>
-        <i class="fa-solid fa-pen-to-square"></i>
-      <% end %>
-
-      <%= link_to appointment_path(appointment), data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"} do %>
-        <i class="fa-regular fa-trash-can ms-1"></i>
-      <% end %>
-    </div>
 
   </div>
 
-
-<%# swiper start %>
-
-<div class="swiper-container" data-controller="swiper">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <h3>Slide 1</h3>
-      <p>This is the first slide.</p>
-    </div>
-    <div class="swiper-slide">
-      <h3>Slide 2</h3>
-      <p>This is the second slide.</p>
-    </div>
-    <div class="swiper-slide">
-      <h3>Slide 3</h3>
-      <p>This is the third slide.</p>
-    </div>
-  </div>
- <!-- Pagination -->
-  <div class="swiper-pagination"></div>
- <!-- Navigation -->
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
-</div>
-<%# swiper end %>
 </li>
