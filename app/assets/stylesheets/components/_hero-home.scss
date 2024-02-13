@@ -1,31 +1,49 @@
 .hero-home {
   background-size: cover;
   background-position: top;
-  padding: 20px;
-  height: 55vh;
+  padding: 10px;
+  height: 45vh;
   align-items: center;
+  position: relative;
 }
 
 .hero-container {
   margin-top: 70px;
   text-align: center;
   align-items: center;
+  position: absolute;
+  top: 10px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+
 }
 
 .hero-container h1, p {
   color: white;
-  margin: 10px 0;
   font-weight: bold;
+  text-align: center;
 }
 
 .hero-container p {
-  font-size: 24px;
+  font-size: 20px;
+
 }
 
 .hero-container h1 {
   font-size: 36px;
+  color: #9E0059;
+
 }
 
 #sign-up-btn {
   background-color: #9E0059;
+}
+
+.button-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  bottom: 20px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
 }
