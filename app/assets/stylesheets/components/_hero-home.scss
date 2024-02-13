@@ -2,36 +2,43 @@
   background-size: cover;
   background-position: top;
   padding: 10px;
-  height: 45vh;
-  align-items: center;
+  height: 50vh;
+  //align-items: center;
   position: relative;
 }
 
 .hero-container {
-  margin-top: 70px;
-  text-align: center;
+  margin-top: 80px;
+  //text-align: center;
   align-items: center;
   position: absolute;
   top: 10px; /* Adjust as needed */
   left: 50%;
   transform: translateX(-50%);
+  width: 80%;
 
 }
 
-.hero-container h1, p {
+.hero-container h1 {
   color: white;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
 }
 
 .hero-container p {
-  font-size: 20px;
+  font-size: 16px;
+  color: gray;
+  //font-weight: bold;
+  font-style: italic;
+  line-height: 20px;
+  width: 80%;
 
 }
 
 .hero-container h1 {
   font-size: 36px;
-  color: #9E0059;
+  // color: #9E0059;
+  color:#176B87;
 
 }
 

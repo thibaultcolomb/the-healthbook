@@ -3,20 +3,28 @@
 
 .button-container {
   display: flex;
-  flex-direction: column;
-  align-items: center; /* Aligns items along the cross-axis (vertically in this case) */
+  // flex-direction: column;
+  align-items: center;
 }
 
 .btn-primary {
   display: flex;
   margin: 10px;
-  width: 250px;
-  height: 50px;
+  // height: 50px;
   align-items: center;
   justify-content: center;
-  font-size: x-large;
+  // font-size: x-large;
+  font-size: 16px;
+}
 
-
+.btn-home {
+  display: flex;
+  margin: 10px;
+  width: 190px;
+  background-color: #176B87;
+  color: white;
+  align-items: center;
+  font-size: 16px;
 }
 
 /* Ensure the body takes up the full height of the viewport */
@@ -24,7 +32,8 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100%;
+
 }
 
 /* Style for the bottom item */
@@ -51,7 +60,6 @@
   background-color: #176B87;
   color: white;
   font-size: 16px;
-
 }
 
 .fa-li {
