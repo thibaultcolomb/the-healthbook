@@ -1,9 +1,13 @@
 class Report < ApplicationRecord
   belongs_to :user
   belongs_to :doctor, optional: true
+  accepts_nested_attributes_for :doctor
+  validates_associated :doctor
+
 
   has_many :appointment_attachements
   has_many :appointments, through: :appointment_attachements
+
 
   validates :title, :report_date, :category, presence: true
 

@@ -34,13 +34,17 @@ class ReportsController < ApplicationController
 
   def new
     @report = Report.new
+    @report.build_doctor
 
   end
 
   def create
     @report = Report.new(report_params)
+    @doctor = Doctor.new(report_params[:doctor_attributes])
+    @doctor.user = current_user
+    @doctor.save
     @report.user = current_user
-
+    @report.doctor = @doctor
     if params[:report][:doctor_id].present?
       @report.doctor = Doctor.find(params[:report][:doctor_id])
     end
@@ -101,9 +105,12 @@ class ReportsController < ApplicationController
   require 'net/http'
 
   def report_params
-    params.require(:report).permit(:title, :category, :note, :current_user_id, :report_date, :photo, :qr_code, :doctor_id, :doctor_first_name, :doctor_last_name, )
+    params.require(:report).permit(:title, :category, :note, :current_user_id, :report_date, :photo, :qr_code, :doctor_id, :doctor_first_name, :doctor_last_name, doctor_attributes: [:email, :first_name, :last_name, :specialty])
   end
 
+  def doctor_params
+    params.require(:doctor).permit(:first_name, :last_name, :specialty, :email)
+  end
   def convert_image_to_content
     # image_url = Cloudinary::Utils.cloudinary_url(@report.photo)
     begin
