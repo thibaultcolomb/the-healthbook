@@ -19,14 +19,14 @@
 
 
 <ul class="appointments">
-  <h3>Upcoming</h3>
+  <h5>Upcoming</h5>
   <% @appointments.sort_by(&:appointment_date).each do |appointment| %>
     <% if appointment.appointment_date > Date.today %>
       <%= render "appointment_swiper", appointment: appointment %>
     <% end %>
   <% end %>
 
-  <h3>Past</h3>
+  <h5>Past</h5>
   <% @appointments.sort_by(&:appointment_date).reverse_each do |appointment| %>
     <% if appointment.appointment_date <= Date.today %>
       <%= render "appointment_card", appointment: appointment %>
