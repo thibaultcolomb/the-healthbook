@@ -18,8 +18,8 @@
     <%= f.input :pdf, as: :file, input_html: {class: "bg-white"} %>
 
     <div class="d-flex">
-    <button type="button" class="btn-select-doctors btn-select-doctors-active" data-action="click->show-doctors#showselect" data-show-doctors-target="selectbutton">Choose an existing doctor</button>
-    <button type="button" class="btn-select-doctors" data-action="click->show-doctors#showquestions" data-show-doctors-target="questionsbutton">Add a new doctor</button>
+    <button type="button" class="btn-select-doctors btn-select-doctors-active" data-action="click->show-doctors#showselect" data-show-doctors-target="selectbutton">Choose doctor</button>
+    <button type="button" class="btn-select-doctors" data-action="click->show-doctors#showquestions" data-show-doctors-target="questionsbutton">Add doctor</button>
     </div>
     <div data-show-doctors-target="select">
       <%= f.association :doctor, label: "Doctor", collection: current_user.doctors.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name}", doctor.id] }, include_blank: "Select Doctor", input_html: {class: "bg-white"}%>
