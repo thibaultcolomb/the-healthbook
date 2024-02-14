@@ -1,18 +1,18 @@
 <%# swiper start %>
 <div class="swiper-container" data-controller="swiper">
   <div class="swiper-wrapper">
-    <div class="swiper-slide full-width">
+    <div class="swiper-slide">
       <%# all the content of the appointment card%>
       <%= render "appointment_card", appointment: appointment %>
       <%# end of all the content of the appointment card%>
     </div>
-    <div class="swiper-slide small-width ">
-      <div class="appointment-card p-3">
+    <div class="swiper-slide">
+      <div class="appointment-card p-3 appointment-card-buttons">
         <%= link_to edit_appointment_path(appointment) do %>
-          <i class="fa-solid fa-pen-to-square fa-3x text-align-center"></i>
+          <i class="fa-solid fa-pen-to-square  text-align-center"></i>
         <% end %>
         <%= link_to appointment_path(appointment), data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"} do %>
-          <i class="fa-regular fa-trash-can ms-1 fa-3x text-align-center"></i>
+          <i class="fa-regular fa-trash-can ms-1 text-align-center"></i>
         <% end %>
       </div>
     </div>
