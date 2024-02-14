@@ -5,7 +5,7 @@ class Report < ApplicationRecord
   validates_associated :doctor
 
 
-  has_many :appointment_attachements
+  has_many :appointment_attachements, dependent: :destroy
   has_many :appointments, through: :appointment_attachements
 
 
