@@ -9,7 +9,7 @@
       <div class="add-button-div" data-controller="report-type">
         <div class="dropdown">
           <!-- Button trigger dropdown -->
-          <i class="fa-solid fa-plus  text-primary mb-3 btn bg-primary text-white" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
+          <i class="fa-solid fa-plus  text-primary mb-1 btn bg-primary text-white" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
           <!-- Dropdown menu -->
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li><%= link_to "Upload image", new_report_path(choice: 'photo'), class: "dropdown-item", data: { action: "click->report-type#selectOption", choice: "photo" } %></li>

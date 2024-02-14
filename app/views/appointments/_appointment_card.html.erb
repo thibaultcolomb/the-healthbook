@@ -17,7 +17,6 @@
         <%= appointment.doctor.specialty %>
       </div>
     </div>
-
     <div class="appointment-content">
       <div style="color: gray;"><%= "#{appointment.time.strftime("%I:%M %p")}" %></div>
     <% if appointment.reports.present? %>
