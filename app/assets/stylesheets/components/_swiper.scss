@@ -1,11 +1,10 @@
 
-.swiper-slide.small-width {
-  width: 5%;
-  text-align: center;
-  align-items: center;
-}
 
 .swiper-container {
   width: 100vw;
   overflow: hidden;
+  z-index: -20;
+  margin: 6px;
+  text-align: center;
+  align-items: center;
 }
