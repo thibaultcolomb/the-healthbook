@@ -11,5 +11,3 @@ window.Stimulus   = application
 // Stimulus.register("show-doctors", ShowDoctorsController)
 
 export { application }
-import ReportTypeController from "../controllers/report_type_controller.js"
-Stimulus.register("report-type", ReportTypeController)
