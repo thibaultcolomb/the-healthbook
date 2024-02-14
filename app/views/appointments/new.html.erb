@@ -11,11 +11,15 @@
   <%= simple_form_for [@appointment] do |f| %>
   <%= f.input :appointment_date,
             as: :string,
+            label: false,
             input_html: { data: { controller: "datepicker" } },
-            class: "bg-light" %>
+            class: "bg-light", placeholder: "Appointment date*"%>
   <%= f.input :time,
-              as: :time %>
-  <%= f.association :reports, label: "Report", collection: current_user.reports.all.map { |report| ["#{report.title}", report.id] }, include_blank: "Select Report" %>
+            as: :time,
+            label: false,
+            input_html: { class: "bg-white" } %>
+
+  <%= f.association :reports, label: false, collection: current_user.reports.all.map { |report| ["#{report.title}", report.id] }, include_blank: "Select Report" %>
   <%#= f.input :report_ids, collection: @reports %>
   <div class="doctors-button-container">
     <button type="button" class="btn-select-doctors btn-select-doctors-active" data-action="click->show-doctors#showselect" data-show-doctors-target="selectbutton">Select doctor</button>
@@ -24,7 +28,7 @@
   <div data-show-doctors-target="select">
     <%#
     <%= f.association :doctor, label: "Doctor", collection: Doctor.all, label_method: :first_name, value_method: :id, include_blank: "Select Doctor" %>
-    <%= f.association :doctor, label: "Doctor", collection: current_user.doctors.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name}", doctor.id] }, include_blank: "Select Doctor" %>
+    <%= f.association :doctor, label: false, collection: current_user.doctors.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name}", doctor.id] }, include_blank: "Select Doctor*" %>
   </div>
 
 
@@ -32,11 +36,11 @@
 
   <div data-show-doctors-target="questions" class="hidden">
   <%= f.simple_fields_for :doctor do |d| %>
-    <%= d.input :first_name, input_html: { class: "bg-white" } %>
-    <%= d.input :last_name, input_html: { class: "bg-white" } %>
-    <%= d.input :email, input_html: { class: "bg-white" } %>
-    <%= d.input :specialty, collection: ["Internal Medicine", "Surgery", "Pediatrics", "Obstetrics and Gynecology", "Psychiatry", "Radiology", "Anesthesiology", "Emergency Medicine", "Pathology", "Ophthalmology", "Otolaryngology (ENT)", "Dermatology", "Neurology", "Urology", "Orthopedics", "Physical Medicine and Rehabilitation", "Allergy and Immunology", "Infectious Diseases", "Endocrinology", "Cardiology"], input_html: {class: "bg-white"}%>
-  <% end %>
+        <%= d.input :first_name, label: false, input_html: { class: "bg-white" }, placeholder: "First name*" %>
+        <%= d.input :last_name, label: false, input_html: { class: "bg-white" }, placeholder: "Last name*" %>
+        <%= d.input :email, label: false, input_html: { class: "bg-white" }, placeholder: "Email*"%>
+        <%= d.input :specialty, label: false, collection: ["Internal Medicine", "Surgery", "Pediatrics", "Obstetrics and Gynecology", "Psychiatry", "Radiology", "Anesthesiology", "Emergency Medicine", "Pathology", "Ophthalmology", "Otolaryngology (ENT)", "Dermatology", "Neurology", "Urology", "Orthopedics", "Physical Medicine and Rehabilitation", "Allergy and Immunology", "Infectious Diseases", "Endocrinology", "Cardiology"], input_html: { class: "bg-white" }, include_blank: "Specialty*"%>
+      <% end %>
 </div>
 
   <%= f.submit "Create Appointment", class: 'btn btn-primary form-submit-btn' %>
