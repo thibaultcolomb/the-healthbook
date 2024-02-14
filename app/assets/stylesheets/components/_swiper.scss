@@ -1,11 +1,6 @@
-.swiper-slide.swiper-slide {
-  height: 100%; /* Ensure all slides fill container height */
-}
-
-.swiper-slide.full-width {
-  width: 90%; /* Set width of the first slide to 90% */
-}
 
 .swiper-slide.small-width {
-  width: 5%; /* Set width of the second and third slides to 5% */
+  width: 5%;
+  text-align: center;
+  align-items: center;
 }

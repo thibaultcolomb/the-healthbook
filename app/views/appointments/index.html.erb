@@ -29,7 +29,7 @@
   <h3>Past</h3>
   <% @appointments.sort_by(&:appointment_date).reverse_each do |appointment| %>
     <% if appointment.appointment_date <= Date.today %>
-      <%= render "appointment_card", appointment: appointment %>
+      <%= render "appointment_swiper", appointment: appointment %>
     <% end %>
   <% end %>
 </ul>
