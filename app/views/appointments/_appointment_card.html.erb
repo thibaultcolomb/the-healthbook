@@ -19,7 +19,7 @@
     </div>
 
     <div class="appointment-content">
-      <%= "#{appointment.time.strftime("%I:%M %p")}" %>
+      <div style="color: gray;"><%= "#{appointment.time.strftime("%I:%M %p")}" %></div>
     <% if appointment.reports.present? %>
       <p class="mt-0" style="color: #176B87">Reports: <%# appointments.each do |appointment| %>
         <% appointment.reports.each_with_index do |report, index| %>
