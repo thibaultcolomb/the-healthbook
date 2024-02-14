@@ -8,7 +8,7 @@
   <div class="hero-home" style="background-image: url(https://images.unsplash.com/photo-1638202993928-7267aad84c31?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
     <div class="hero-container">
       <h1>HealthBook</h1>
-      <p>Take your health into your own hands and keep track of your medical history</p>
+      <p>Manage your medical reports and keep your health in your hands</p>
     </div>
 
      <div class="button-container">
@@ -34,7 +34,7 @@
     <%# Report card %>
 
       <% reports = current_user.reports.where.not(viewed_at: nil).order(viewed_at: :desc).limit(2) %>
-      <h5>Recently viewed reports</h5>
+      <h5>Recent reports</h5>
       <% if reports.first.present? %>
         <ul class="reports">
           <% reports.each do |report|%>
@@ -43,7 +43,7 @@
         </ul>
       <% else %>
         <div class="border m-3 p-3">
-          <p style="color: black; padding: 0; margin: 0;" >You don`t have any recent reports.</p>
+          <p style="color: black; padding: 0; margin: 0;" >You don't have any recent reports.</p>
       </div>
       <% end %>
 
@@ -59,7 +59,7 @@
 
     <% else %>
       <div class="border m-3 p-3">
-          <p style="color: black; padding: 0; margin: 0;" >You don`t have any upcoming appointments.</p>
+          <p style="color: black; padding: 0; margin: 0;" >You don't have any upcoming appointments.</p>
       </div>
     <% end %>
   <% else %>

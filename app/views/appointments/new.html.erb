@@ -18,8 +18,8 @@
   <%= f.association :reports, label: "Report", collection: current_user.reports.all.map { |report| ["#{report.title}", report.id] }, include_blank: "Select Report" %>
   <%#= f.input :report_ids, collection: @reports %>
   <div class="doctors-button-container">
-    <button type="button" class="btn-select-doctors btn-select-doctors-active" data-action="click->show-doctors#showselect" data-show-doctors-target="selectbutton">Choose an existing doctor</button>
-    <button type="button" class="btn-select-doctors" data-action="click->show-doctors#showquestions" data-show-doctors-target="questionsbutton">Add a new doctor</button>
+    <button type="button" class="btn-select-doctors btn-select-doctors-active" data-action="click->show-doctors#showselect" data-show-doctors-target="selectbutton">Select doctor</button>
+    <button type="button" class="btn-select-doctors" data-action="click->show-doctors#showquestions" data-show-doctors-target="questionsbutton">Add doctor</button>
 
   </div>
   <div data-show-doctors-target="select">
