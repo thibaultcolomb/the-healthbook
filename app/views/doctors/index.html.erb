@@ -6,13 +6,14 @@
     <div class="mx-auto text-center">
       <h2>Your Doctors</h2>
     </div>
+      <div class="d-flex justify-content-end">
+        <%= link_to new_doctor_path do %>
+          <i class="fa-solid fa-plus text-primary mb-3 btn bg-primary text-white"></i>
+        <% end %>
+    </div>
   </div>
 
-  <div class="d-flex justify-content-end">
-    <%= link_to new_doctor_path do %>
-      <i class="fa-solid fa-plus text-primary mb-3 btn bg-primary text-white"></i>
-    <% end %>
-  </div>
+
 
   <div class="doctor-cards">
     <% @doctors.each do |doctor| %>
