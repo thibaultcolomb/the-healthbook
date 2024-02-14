@@ -12,15 +12,24 @@
                 %>
     <%# Should do mapping in controller %>
 
+
     <%= f.input :category, label: false, collection: ['Blood Tests', 'Imaging', 'Surgery', 'Pathology', 'Cardiology', 'Endoscopy', 'Pulmonary Function Test (PFT)', 'Genetic Testing', 'Allergy Testing', 'Neurological', 'Dermatology', 'Obstetric and Gynecological', 'Urology', 'Orthopedic', 'Gastroenterology', 'Ophthalmology', 'Nuclear Medicine', 'Psychiatric', 'Rehabilitation', 'Dental'], input_html: {class: "bg-white"}, include_blank: "Category*"%>
-    <%= f.input :note, label: false, input_html: {class: "bg-white"}, placeholder: "Note"%>
-    <%= f.input :photo, label: false, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo btn btn-upload' }, label: '📷 Add Photo' %>
-    <%= f.input :pdf, label: false, input_html: { class: 'd-none' }, label_html: { class: 'upload-pdf btn btn-upload'}, label: '📷 PDF' %>
 
 
-    <div class="d-flex">
-    <button type="button" class="btn-select-doctors btn-select-doctors-active" data-action="click->show-doctors#showselect" data-show-doctors-target="selectbutton">Choose an existing doctor</button>
-    <button type="button" class="btn-select-doctors" data-action="click->show-doctors#showquestions" data-show-doctors-target="questionsbutton">Add a new doctor</button>
+    <% if params[:choice] == "photo" %>
+      <%= f.input :photo, label: false, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo btn btn-upload' }, label: '📷 Add Photo' %>
+    <% elsif params[:choice] == "pdf" %>
+       <%= f.input :pdf, label: false, input_html: { class: 'd-none' }, label_html: { class: 'upload-pdf btn btn-upload'}, label: '📷 PDF' %>
+    <% else %>
+      <%= f.input :note, label: false, input_html: {class: "bg-white"}, placeholder: "Note"%>
+    <% end %>
+
+
+
+
+    <div class="doctors-button-container">
+      <button type="button" class="btn-select-doctors btn-select-doctors-active" data-action="click->show-doctors#showselect" data-show-doctors-target="selectbutton">Choose doctor</button>
+      <button type="button" class="btn-select-doctors" data-action="click->show-doctors#showquestions" data-show-doctors-target="questionsbutton">Add doctor</button>
     </div>
 
     <div data-show-doctors-target="select">

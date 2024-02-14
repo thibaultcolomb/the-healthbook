@@ -4,15 +4,16 @@
       <i class="fa-solid fa-arrow-left ms-3 back-arrow" ></i>
     <% end %>
     <div class="mx-auto text-center">
-      <h2 style="color: #176B87;">Your appointments</h2>
+      <h2 style="color: #176B87;">Appointments</h2>
     </div>
+    <div class="add-button-div">
+      <%= link_to new_appointment_path do %>
+        <i class="fa-solid fa-plus  text-primary mb-3 btn bg-primary text-white"></i>
+      <% end %>
+  </div>
   </div>
 
-  <div class="add-button-div">
-    <%= link_to new_appointment_path do %>
-      <i class="fa-solid fa-plus  text-primary mb-3 btn bg-primary text-white"></i>
-    <% end %>
-  </div>
+
 </div>
 
 <div class="main">
