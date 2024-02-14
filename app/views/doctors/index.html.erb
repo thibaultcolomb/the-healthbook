@@ -25,13 +25,14 @@
           <div>
             <h3 class="doctor-card-title"><%= doctor.first_name + " " + doctor.last_name %></h3>
             <p class="doctor-card-text"><%= doctor.specialty %></p>
+
           </div>
 
-          <div class="mt-0 ml-auto">
+          <div class="doctor-icons mt-0 ml-auto">
             <%= link_to edit_doctor_path(doctor) do %>
               <i class="fa-regular fa-pen-to-square me-1"></i>
             <% end %>
-            <%= link_to edit_doctor_path(doctor), data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"} do %>
+            <%= link_to doctor_path(doctor), data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"} do %>
               <i class="fa-regular fa-trash-can"></i>
             <% end %>
           </div>
