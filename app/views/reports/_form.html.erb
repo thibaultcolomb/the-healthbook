@@ -20,7 +20,7 @@
       <%= f.input :photo, label: false, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo btn btn-upload' }, label: '📷 Add Photo' %>
     <% elsif params[:choice] == "pdf" %>
        <%= f.input :pdf, label: false, input_html: { class: 'd-none' }, label_html: { class: 'upload-pdf btn btn-upload'}, label: '📷 PDF' %>
-    <% else %>
+    <% elsif params[:choice] == "manual"%>
       <%= f.input :note, label: false, input_html: {class: "bg-white"}, placeholder: "Note"%>
     <% end %>
 
