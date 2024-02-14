@@ -4,7 +4,7 @@ import Swiper from "swiper"
 export default class extends Controller {
   connect() {
     this.swiper = new Swiper('.swiper-container', {
-      spaceBetween: 10,
+      /* spaceBetween: 10, */
       freeMode: true,
     });
   }
