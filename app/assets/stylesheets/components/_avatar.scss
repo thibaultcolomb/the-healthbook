@@ -21,10 +21,13 @@
 }
 
 .avatar-doctor {
-  width: 100px;
-  height: 100px;
+  height: 80%;
+  object-fit: cover;
+  display: flex;
   padding: 20px;
-  background-size: cover;
-  background-position: center;
+  background-position: left;
   color: white;
+  margin-right: 250px;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }

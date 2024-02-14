@@ -13,9 +13,17 @@
     <%# Should do mapping in controller %>
 
     <%= f.input :category, collection: ['Blood Tests', 'Imaging', 'Surgery', 'Pathology', 'Cardiology', 'Endoscopy', 'Pulmonary Function Test (PFT)', 'Genetic Testing', 'Allergy Testing', 'Neurological', 'Dermatology', 'Obstetric and Gynecological', 'Urology', 'Orthopedic', 'Gastroenterology', 'Ophthalmology', 'Nuclear Medicine', 'Psychiatric', 'Rehabilitation', 'Dental'], input_html: {class: "bg-white"}%>
-    <%= f.input :note, input_html: {class: "bg-white"} %>
-    <%= f.input :photo, as: :file, input_html: {class: "bg-white"} %>
-    <%= f.input :pdf, as: :file, input_html: {class: "bg-white"} %>
+
+    <% if params[:choice] == "photo" %>
+      <%= f.input :photo, as: :file, input_html: {class: "bg-white"} %>
+    <% elsif params[:choice] == "pdf" %>
+       <%= f.input :pdf, as: :file, input_html: {class: "bg-white"} %>
+    <% else %>
+      <%= f.input :note, input_html: {class: "bg-white"} %>
+    <% end %>
+
+
+
 
     <div class="d-flex">
     <button type="button" class="btn-select-doctors btn-select-doctors-active" data-action="click->show-doctors#showselect" data-show-doctors-target="selectbutton">Choose doctor</button>

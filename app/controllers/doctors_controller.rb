@@ -7,6 +7,7 @@ class DoctorsController < ApplicationController
     @doctor = Doctor.new
   end
 
+
   def create
     @doctor = Doctor.new(doctor_params)
     @doctor.user = current_user
@@ -20,6 +21,7 @@ class DoctorsController < ApplicationController
   end
 
   def edit
+
     @doctor = current_user.doctors.find(params[:id])
   end
 
