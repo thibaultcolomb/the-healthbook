@@ -3,7 +3,9 @@
   <div class="swiper-wrapper">
     <div class="swiper-slide">
       <%# all the content of the appointment card%>
-      <%= render "appointment_card", appointment: appointment %>
+      <div class="adjusted-appointment_card" style="width:90%;">
+        <%= render "appointment_card", appointment: appointment%>
+      </div>
       <%# end of all the content of the appointment card%>
     </div>
     <div class="swiper-slide">
