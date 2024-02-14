@@ -6,6 +6,20 @@
     <div class="mx-auto text-center">
       <h2 style="color: #176B87;">Medical reports</h2>
     </div>
+      <div class="add-button-div" data-controller="report-type">
+        <div class="dropdown">
+          <!-- Button trigger dropdown -->
+          <i class="fa-solid fa-plus  text-primary mb-3 btn bg-primary text-white" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
+          <!-- Dropdown menu -->
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><%= link_to "Upload image", new_report_path(choice: 'photo'), class: "dropdown-item", data: { action: "click->report-type#selectOption", choice: "photo" } %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to "Upload pdf", new_report_path(choice: 'pdf'), class: "dropdown-item", data: { action: "click->report-type#selectOption", choice: "pdf" } %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to "Fill manually", new_report_path(choice: 'manual'), class: "dropdown-item", data: { action: "click->report-type#selectOption", choice: "manual" } %></li>
+          </ul>
+        </div>
+      </div>
   </div>
 
 
@@ -46,21 +60,6 @@
         <% end %>
     </ul>
   </div>
-
-    <div class="add-button-div" data-controller="report-type">
-      <div class="dropdown">
-        <!-- Button trigger dropdown -->
-        <i class="fa-solid fa-plus  text-primary mb-3 btn bg-primary text-white" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
-        <!-- Dropdown menu -->
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <li><%= link_to "Upload image", new_report_path(choice: 'photo'), class: "dropdown-item", data: { action: "click->report-type#selectOption", choice: "photo" } %></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><%= link_to "Upload pdf", new_report_path(choice: 'pdf'), class: "dropdown-item", data: { action: "click->report-type#selectOption", choice: "pdf" } %></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><%= link_to "Fill manually", new_report_path(choice: 'manual'), class: "dropdown-item", data: { action: "click->report-type#selectOption", choice: "manual" } %></li>
-        </ul>
-      </div>
-    </div>
 </div>
 
 <div class="main">
