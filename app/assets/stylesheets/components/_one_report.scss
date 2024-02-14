@@ -1,6 +1,6 @@
 .one-report-card {
   overflow: hidden;
-  height: 100px;
+  height: 60px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -28,7 +28,7 @@
 }
 
 .one-report-details {
-  padding: 16px;
+  padding: 8px;
   font-size: 12px;
   line-height: 1.4;
   //opacity: .7;
@@ -53,6 +53,7 @@
   padding: 16px;
   margin: 0 auto;
   border-radius: 8px;
+  overflow-x: scroll;
 }
 
 
