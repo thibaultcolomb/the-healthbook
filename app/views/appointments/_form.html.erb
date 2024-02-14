@@ -8,10 +8,7 @@
 
 <%= f.input :time,
               as: :time, label: false, input_html: { class: "bg-white" }%>
-
-  <%= f.input :content,
-              as: :file, label: false, input_html: { class: "bg-white" }, placeholder: "Content" %>
-
+ <%= f.association :reports, label: false, collection: current_user.reports.all.map { |report| ["#{report.title}", report.id] }, include_blank: "Select Report" %>
   <%# <%= f.association :doctor, label: "Doctor", collection: Doctor.all, label_method: :name, value_method: :id, include_blank: "Select Doctor" %>
   <%= f.association :doctor, label: false, collection: Doctor.all.map { |doctor| ["#{doctor.first_name} #{doctor.last_name}", doctor.id] }, include_blank: "Select Doctor", input_html: { class: "bg-white" },include_blank: "Select Doctor*" %>
 
