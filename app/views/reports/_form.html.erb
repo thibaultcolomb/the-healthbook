@@ -1,6 +1,6 @@
 
 <div data-controller="show-doctors">
-  <%= simple_form_for report, html: { autocomplete: 'off' } do |f| %>
+  <%= simple_form_for report, html: { autocomplete: 'off', data: {controller: "photo-preview"} } do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -17,7 +17,9 @@
 
 
     <% if params[:choice] == "photo" %>
-      <%= f.input :photo, label: false, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo btn btn-upload' }, label: '📷 Add Photo' %>
+
+<%= f.input :photo, as: :file, input_html: { class: 'd-none', data: { photo_preview_target: "input", action:"change->photo-preview#displayPreview" }}, label_html: { class: 'upload-photo btn btn-upload'}, label: '📷 Photo'%>
+<%= image_tag "", width: 300, class: "hidden", data: { photo_preview_target: "preview" } %>
     <% elsif params[:choice] == "pdf" %>
        <%= f.input :pdf, label: false, input_html: { class: 'd-none' }, label_html: { class: 'upload-pdf btn btn-upload'}, label: '📷 PDF' %>
     <% elsif params[:choice] == "manual"%>
