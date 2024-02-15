@@ -35,8 +35,9 @@
             params[:report_date],
             data: { controller: "datepicker"}, class: "form-control p-0 ps-1 ms-1 radius-4", placeholder: "Pick a date" %>
 
-        <%= submit_tag "Search", name: "", class: "btn bg-primary m-0 p-0 ms-1 p-1 radius-4", style: "color: white;" %>
-      <% end %>
+        <%= submit_tag "Search", name: "", class: "btn bg-primary m-0 p-0 ms-1 p-1 radius-4", style: "color: white;" do %>
+         <% end %>
+        <% end %>
     </div>
 
   <div class="scrolling-wrapper">
