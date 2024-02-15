@@ -1,5 +1,6 @@
 require "open-uri"
 class HealthMailer < ApplicationMailer
+  default from: "info@thehealtbook.online"
   def share_report(report, recipient_email)
     @report = report
 
