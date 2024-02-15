@@ -17,10 +17,9 @@
         <%= appointment.doctor.specialty %>
       </div>
     </div>
-    <div class="appointment-content">
-      <div style="color: gray;"><%= "#{appointment.time.strftime("%I:%M %p")}" %></div>
+      <div style="color: gray; text-align: left;"><%= "#{appointment.time.strftime("%I:%M %p")}" %></div>
     <% if appointment.reports.present? %>
-      <p class="mt-0" style="color: #176B87">Reports: <%# appointments.each do |appointment| %>
+      <p class="mt-0" style="color: #176B87; text-align: left;">Reports: <%# appointments.each do |appointment| %>
         <% appointment.reports.each_with_index do |report, index| %>
           <% next if index == 0 %>
             <%= link_to report.title, report_path(report) %>
@@ -28,7 +27,6 @@
       <%# end %>
       <% end %>
       </p>
-    </div>
 
 
   </div>
