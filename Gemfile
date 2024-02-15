@@ -2,6 +2,8 @@ source "https://rubygems.org"
 
 ruby "3.1.2"
 
+gem 'postmark-rails'
+
 gem 'rqrcode'
 
 gem 'faker'
