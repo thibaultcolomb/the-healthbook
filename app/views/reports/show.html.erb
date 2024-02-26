@@ -27,7 +27,7 @@
   <div class="one-report-card">
     <div class="one-report-details">
       <% if @report.doctor.present? %>
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center justify-content-between">
           <p class= "mb-1"style="font-size: 16px;"><strong><%=@report.doctor.first_name + " " + @report.doctor.last_name%></strong></p>
           <p  class= "ms-2 mb-1" style="font-size: 16px;"> | </p>
           <p class= "ms-2 mb-1" style="font-size: 16px; color: #9E0059"> <%= @report.doctor.specialty %></p>
